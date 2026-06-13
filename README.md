@@ -22,7 +22,7 @@ DROS funktioniert wie ein unbestechlicher digitaler Notar. Jeder Vorgang wird kr
 
 ## Beispiel
 
-    dros.register("Only Once - Marco Martin", content);
+    dros.register("Mein Werk- Marco Martin", content);
     Hash: sha256:3f8a9c...
     Timestamp: 2026-06-14T00:50:00Z
     Status: LOCKED ✓
