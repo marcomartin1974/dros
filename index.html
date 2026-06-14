@@ -73,6 +73,10 @@
   .cta-meta{font-family:var(--mono);font-size:0.78rem;color:var(--gray);margin-top:1.5rem}
   .cta-meta a{color:var(--cyan);text-decoration:none}
   footer{padding:1.5rem;text-align:center;border-top:1px solid var(--border);font-family:var(--mono);font-size:0.72rem;color:var(--gray)}
+  .ticker-wrap{overflow:hidden;background:#0a0f28;border-top:2px solid var(--cyan);border-bottom:2px solid var(--cyan);padding:0.9rem 0}
+  .ticker{display:flex;gap:3rem;white-space:nowrap;animation:ticker 25s linear infinite;font-family:var(--mono);font-size:1rem;font-weight:700;color:var(--cyan);letter-spacing:0.08em}
+  .ticker span{flex-shrink:0}
+  @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 </style>
 </head>
 <body>
@@ -110,6 +114,26 @@
     </div>
   </div>
 </section>
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span>⬡ GERICHTSFEST</span>
+    <span>⬡ MANIPULATIONSSICHER</span>
+    <span>⬡ SHA-256 VERSCHLÜSSELT</span>
+    <span>⬡ URHEBERRECHTSSCHUTZ</span>
+    <span>⬡ COMPLIANCE READY</span>
+    <span>⬡ BFT-KONSENS</span>
+    <span>⬡ RUST POWERED</span>
+    <span>⬡ UNVERÄNDERBAR</span>
+    <span>⬡ GERICHTSFEST</span>
+    <span>⬡ MANIPULATIONSSICHER</span>
+    <span>⬡ SHA-256 VERSCHLÜSSELT</span>
+    <span>⬡ URHEBERRECHTSSCHUTZ</span>
+    <span>⬡ COMPLIANCE READY</span>
+    <span>⬡ BFT-KONSENS</span>
+    <span>⬡ RUST POWERED</span>
+    <span>⬡ UNVERÄNDERBAR</span>
+  </div>
+</div>
 <div class="stats">
   <div class="stat"><div class="stat-val">SHA-256</div><div class="stat-lab">Kryptografisch</div></div>
   <div class="stat"><div class="stat-val">BFT</div><div class="stat-lab">Fault Tolerant</div></div>
@@ -166,20 +190,20 @@
   <div class="pricing-stack">
     <div class="price-card">
       <div class="price-tier">Solo</div>
-      <div class="price-amount">29 € <span>/Monat</span></div>
+      <div class="price-amount">49 € <span>/Monat</span></div>
       <div class="price-target">Einzelkünstler &amp; Freelancer</div>
       <ul class="price-features"><li>1.000 Vorgänge/Monat</li><li>SHA-256 Zeitstempel</li><li>PDF-Beweiszertifikat</li><li>E-Mail Support</li></ul>
     </div>
     <div class="price-card featured">
       <div class="ftag">★ EMPFOHLEN</div>
       <div class="price-tier">Studio</div>
-      <div class="price-amount">199 € <span>/Monat</span></div>
+      <div class="price-amount">490 € <span>/Monat</span></div>
       <div class="price-target">Labels, Kanzleien &amp; Agenturen</div>
       <ul class="price-features"><li>50.000 Vorgänge/Monat</li><li>API-Zugang</li><li>5 Nutzer</li><li>SLA 99,9%</li><li>Priority Support</li></ul>
     </div>
     <div class="price-card">
       <div class="price-tier">Enterprise</div>
-      <div class="price-amount">ab 2.000 € <span>/Monat</span></div>
+      <div class="price-amount">ab 9.900 € <span>/Monat</span></div>
       <div class="price-target">Konzerne &amp; Behörden</div>
       <ul class="price-features"><li>Unbegrenzte Vorgänge</li><li>On-Premise Deployment</li><li>Custom SLA</li><li>24/7 Support</li></ul>
     </div>
