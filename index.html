@@ -110,7 +110,7 @@
     <p>DROS protokolliert jeden Vorgang kryptografisch — unveränderbar, prüfbar, gerichtsfest.</p>
     <div class="actions">
       <a href="#demo" class="btn-p">Live Demo testen</a>
-      <a href="https://github.com/marcomartin1974/dros" target="_blank" class="btn-g">github →</a>
+      
     </div>
   </div>
 </section>
@@ -146,8 +146,12 @@
 <section class="demo-section" id="demo">
   <div class="eyebrow">Live Demo</div>
   <h2 class="stitle">Teste DROS jetzt.</h2>
-  <p class="ssub">Gib beliebigen Text ein — z.B. deinen Track-Namen oder ein Dokument. DROS erstellt sofort einen gerichtsfesten Zeitstempel.</p>
-  <textarea class="demo-input" rows="3" placeholder="z.B. 'Track: Neon Dreams v3' oder 'Vertrag XY vom 14.06.2026'"></textarea>
+  <div style="background:rgba(0,212,255,0.1);border:2px solid #00D4FF;border-radius:10px;padding:1.2rem;margin-bottom:1.5rem;font-size:1rem;line-height:1.8;text-align:center">
+    👉 <strong style="color:#00D4FF">Gib irgendetwas ein</strong> — deinen Namen, einen Satz, eine Zahl, egal was.<br>
+    Drücke dann den Button und du bekommst sofort einen <strong style="color:#00FF88">kryptografischen Beweis-Code mit Zeitstempel</strong>.<br>
+    <span style="color:#6B7DB3;font-size:0.88rem">So funktioniert DROS — probiere es jetzt aus!</span>
+  </div>
+  <textarea class="demo-input" rows="3" placeholder="Schreib irgendetwas hier rein — deinen Namen, einen Satz, egal was..."></textarea>
   <button class="demo-btn" onclick="runDemo()">Protokoll erstellen ›</button>
   <div class="demo-result" id="demo-result">
     <div class="tl"><span class="tp">$ </span>dros commit "<span id="dr-input"></span>"</div>
@@ -213,7 +217,7 @@
   <h2>Interesse? Meld dich.</h2>
   <p>Fragen, Demo-Termin oder Angebot — ich antworte persönlich.</p>
   <a href="mailto:marcomartin1974@mail.de?subject=DROS Anfrage" class="btn-p">E-Mail schreiben</a>
-  <div class="cta-meta">Marco Martin · Frankfurt am Main · <a href="https://github.com/marcomartin1974/dros">github.com/marcomartin1974/dros</a></div>
+  <div class="cta-meta">Marco Martin · Frankfurt am Main </div>
 </section>
 <footer>© 2026 Marco Martin · DROS ist proprietäre Software</footer>
 <script>
