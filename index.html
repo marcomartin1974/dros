@@ -9,21 +9,32 @@
             font-family: sans-serif; 
             line-height: 1.6; 
             max-width: 800px; 
-            margin: 0 auto; 
+            margin: 20px auto; 
             padding: 20px; 
             font-size: 20px; 
             color: #ffffff; 
             background-color: #00008B; 
         }
-        h1 { color: #ffffff; border-bottom: 3px solid #ffffff; padding-bottom: 10px; }
-        h2 { color: #ffffff; margin-top: 40px; }
+        h1, h2, h3 { 
+            color: #ffffff; 
+            border-bottom: none; 
+            padding-bottom: 0;
+            margin-top: 30px;
+        }
+        h1 { margin-top: 0; }
         .box { 
-            border: 2px solid #ffffff; 
+            border: 2px solid #ccc; 
             padding: 25px; 
-            background-color: #ffffff; 
-            color: #000000;
+            background-color: #f9f9f9; 
             border-radius: 8px; 
             margin: 25px 0; 
+            box-sizing: border-box; 
+            color: #333333;
+        }
+        .box h3 { 
+            color: #333333; 
+            margin-top: 0; 
+            margin-bottom: 15px; 
         }
         input { 
             padding: 15px; 
@@ -34,19 +45,21 @@
             display: block; 
             margin-bottom: 15px; 
             border: 1px solid #ccc; 
+            color: #000000; 
+            background-color: #ffffff; 
         }
         button { 
             padding: 15px 30px; 
             font-size: 18px; 
-            background-color: #00008B; 
+            background-color: #000000; 
             color: #ffffff; 
             border: none; 
             cursor: pointer; 
             font-weight: bold; 
-            width: 100%;
         }
-        ul { padding-left: 20px; }
-        a { color: #ffffff; }
+        ul { padding-left: 20px; color: #ffffff; }
+        a { color: #ffffff; text-decoration: underline; } 
+        a:hover { color: #cccccc; } 
     </style>
 </head>
 <body>
@@ -56,7 +69,7 @@
     <div class="box">
         <h3>System-Eingabe</h3>
         <input type="text" id="input" placeholder="Vorgang, Dokument oder ID eingeben...">
-        <button onclick="alert('Vorgang wurde im DROS-System kryptografisch verifiziert.')">Protokoll erstellen</button>
+        <button onclick="alert('Vorgang wurde im DROS-System kryptografisch verifiziert und zeitgestempelt.')">Protokoll erstellen</button>
     </div>
 
     <h2>Anwendungsbereiche</h2>
