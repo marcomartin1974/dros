@@ -1,22 +1,47 @@
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DROS v5.5</title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; max-width: 800px; margin: 20px auto; padding: 20px; font-size: 20px; color: #333; }
+        h1 { color: #000; border-bottom: 2px solid #000; padding-bottom: 10px; }
+        h2 { color: #444; margin-top: 30px; }
+        .box { border: 2px solid #ccc; padding: 25px; background: #f9f9f9; border-radius: 8px; margin: 20px 0; }
+        input { padding: 12px; width: 100%; max-width: 300px; font-size: 18px; display: block; margin-bottom: 10px; }
+        button { padding: 12px 25px; font-size: 18px; background: #000; color: #fff; border: none; cursor: pointer; }
+        ul { padding-left: 20px; }
+    </style>
 </head>
 <body>
     <h1>DROS v5.5 — Deterministic Rights Operating System</h1>
     <p>Ein digitales Sicherungssystem, das Vorgänge unveränderbar und mathematisch nachweisbar protokolliert.</p>
 
-    <div style="border:1px solid #ccc; padding:15px; background:#f9f9f9; margin-bottom:20px;">
+    <div class="box">
         <h3>DROS Test-Modul</h3>
         <input type="text" id="input" placeholder="Werk hier eingeben...">
         <button onclick="alert('Registriert! Hash: sha256:3f8a9c...')">Registrieren</button>
     </div>
 
     <h2>Was macht DROS?</h2>
-    <p>DROS funktioniert wie ein unbestechlicher digitaler Notar. Jeder Vorgang wird kryptografisch gesichert.</p>
+    <p>DROS funktioniert wie ein unbestechlicher digitaler Notar. Jeder Vorgang wird kryptografisch gesichert und unveränderbar festgeschrieben. Nachträgliche Manipulation wird sofort erkannt.</p>
+
+    <h2>How it works</h2>
+    <p>1. Ein Werk wird registriert. DROS erstellt einen SHA-256 Hash des Inhalts und eine Hash-Kette, die sofort sichtbar ist.</p>
+
+    <h2>Beispiel</h2>
+    <p style="background: #eee; padding: 10px; font-family: monospace;">
+    dros.register("Mein Werk")<br>
+    Hash: sha256:3f8a9c...<br>
+    Status: LOCKED ✅</p>
+
+    <h2>Einsatzbereiche</h2>
+    <ul>
+        <li>Musikrechte und Lizenzierung</li>
+        <li>Finanztransaktionen</li>
+        <li>Compliance-Dokumentation</li>
+    </ul>
 
     <h2>Kontakt</h2>
     <p><a href="mailto:marcomartin1974@mail.de">marcomartin1974@mail.de</a></p>
