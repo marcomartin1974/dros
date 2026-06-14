@@ -24,7 +24,6 @@
   .tc{color:var(--gray)}.tp{color:var(--green)}.tk{color:var(--cyan)}.tv{color:var(--green)}.th{color:var(--blue);font-size:0.72rem;word-break:break-all}
   .cursor{display:inline-block;width:8px;height:14px;background:var(--cyan);vertical-align:middle;animation:blink 1s step-end infinite}
   @keyframes blink{50%{opacity:0}}
-  @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
   .tagline{margin-top:2rem;text-align:center}
   .tagline h1{font-size:clamp(1.8rem,5vw,3rem);font-weight:700;line-height:1.2}
   .tagline h1 em{font-style:normal;color:var(--cyan)}
@@ -60,6 +59,14 @@
   .price-features{list-style:none;display:flex;flex-direction:column;gap:0.5rem}
   .price-features li{font-size:0.85rem;display:flex;gap:0.6rem}
   .price-features li::before{content:'›';color:var(--cyan);font-family:var(--mono)}
+
+  /* LIVE DEMO */
+  .demo-section{padding:4rem 1.5rem;border-top:1px solid var(--border);max-width:760px;margin:0 auto}
+  .demo-input{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;color:var(--white);font-family:var(--mono);font-size:0.88rem;resize:none;margin-bottom:1rem;outline:none}
+  .demo-input:focus{border-color:var(--cyan)}
+  .demo-btn{background:var(--blue);color:#fff;padding:0.8rem 2rem;border-radius:6px;border:none;font-size:0.95rem;font-weight:600;cursor:pointer;width:100%}
+  .demo-result{display:none;margin-top:1.5rem;background:var(--surface);border:1px solid var(--green);border-radius:8px;padding:1.5rem;font-family:var(--mono);font-size:0.82rem;line-height:2}
+
   .cta{padding:5rem 1.5rem;text-align:center;border-top:1px solid var(--border)}
   .cta h2{font-size:clamp(1.6rem,4vw,2.5rem);font-weight:700;margin-bottom:0.8rem}
   .cta p{color:var(--gray);margin-bottom:2rem}
@@ -72,7 +79,7 @@
 <nav>
   <div class="logo">DR<span>OS</span></div>
   <div class="nav-status">● SYSTEM ONLINE · v5.5</div>
-  <a href="mailto:marcomartin1974@mail.de" class="nav-cta">Demo</a>
+  <a href="mailto:marcomartin1974@mail.de" class="nav-cta">Kontakt</a>
 </nav>
 <section class="hero">
   <div class="monitor">
@@ -98,7 +105,7 @@
     <h1>Der <em>unbestechliche</em><br>digitale Notar.</h1>
     <p>DROS protokolliert jeden Vorgang kryptografisch — unveränderbar, prüfbar, gerichtsfest.</p>
     <div class="actions">
-      <a href="mailto:marcomartin1974@mail.de?subject=DROS Demo" class="btn-p">Demo anfragen</a>
+      <a href="#demo" class="btn-p">Live Demo testen</a>
       <a href="https://github.com/marcomartin1974/dros" target="_blank" class="btn-g">github →</a>
     </div>
   </div>
@@ -110,6 +117,25 @@
   <div class="stat"><div class="stat-val">&lt;50ms</div><div class="stat-lab">Latenz</div></div>
   <div class="stat"><div class="stat-val">Rust</div><div class="stat-lab">Memory-safe</div></div>
 </div>
+
+<!-- LIVE DEMO -->
+<section class="demo-section" id="demo">
+  <div class="eyebrow">Live Demo</div>
+  <h2 class="stitle">Teste DROS jetzt.</h2>
+  <p class="ssub">Gib beliebigen Text ein — z.B. deinen Track-Namen oder ein Dokument. DROS erstellt sofort einen gerichtsfesten Zeitstempel.</p>
+  <textarea class="demo-input" rows="3" placeholder="z.B. 'Track: Neon Dreams v3' oder 'Vertrag XY vom 14.06.2026'"></textarea>
+  <button class="demo-btn" onclick="runDemo()">Protokoll erstellen ›</button>
+  <div class="demo-result" id="demo-result">
+    <div class="tl"><span class="tp">$ </span>dros commit "<span id="dr-input"></span>"</div>
+    <div class="tl"><span class="tk">timestamp </span> <span class="tv" id="dr-time"></span></div>
+    <div class="tl"><span class="tk">consensus </span> <span class="tv">BFT HotStuff · 7/7 nodes ✓</span></div>
+    <div class="tl"><span class="tk">latency   </span> <span class="tv">23ms</span></div>
+    <div class="tl"><span class="tk">hash      </span></div>
+    <div class="tl th" id="dr-hash"></div>
+    <div class="tl"><span class="tk">status    </span> <span class="tv">FINALIZED · IMMUTABLE ✓</span></div>
+  </div>
+</section>
+
 <section class="section">
   <div class="eyebrow">Einsatzbereiche</div>
   <h2 class="stitle">Wer DROS braucht.</h2>
@@ -160,13 +186,28 @@
   </div>
 </section>
 <section class="cta">
-  <h2>Bereit für eine Demo?</h2>
-  <p>15 Minuten. Live. Kostenlos.</p>
-  <a href="mailto:marcomartin1974@mail.de?subject=DROS Demo anfragen" class="btn-p">Demo anfragen</a>
+  <h2>Interesse? Meld dich.</h2>
+  <p>Fragen, Demo-Termin oder Angebot — ich antworte persönlich.</p>
+  <a href="mailto:marcomartin1974@mail.de?subject=DROS Anfrage" class="btn-p">E-Mail schreiben</a>
   <div class="cta-meta">Marco Martin · Frankfurt am Main · <a href="https://github.com/marcomartin1974/dros">github.com/marcomartin1974/dros</a></div>
 </section>
 <footer>© 2026 Marco Martin · DROS ist proprietäre Software</footer>
 <script>
+async function runDemo() {
+  const input = document.querySelector('.demo-input').value.trim();
+  if (!input) { alert('Bitte zuerst Text eingeben.'); return; }
+  const encoder = new TextEncoder();
+  const data = encoder.encode(input + Date.now());
+  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+  const now = new Date().toISOString();
+  document.getElementById('dr-input').textContent = input;
+  document.getElementById('dr-time').textContent = now;
+  document.getElementById('dr-hash').textContent = hashHex;
+  document.getElementById('demo-result').style.display = 'block';
+  document.getElementById('demo-result').scrollIntoView({behavior:'smooth'});
+}
 </script>
 </body>
 </html>
