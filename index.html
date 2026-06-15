@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -16,13 +15,10 @@
   .nav-status{font-family:var(--mono);font-size:0.7rem;color:var(--green)}
   .nav-right{display:flex;align-items:center;gap:0.8rem}
   .nav-cta{background:var(--blue);color:#fff;padding:0.45rem 1rem;border-radius:4px;text-decoration:none;font-size:0.82rem;font-weight:600}
-
-  /* ── LANGUAGE SWITCHER ── */
   .lang-switcher{display:flex;gap:0.3rem;align-items:center;background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:0.25rem}
   .lang-btn{font-family:var(--mono);font-size:0.68rem;font-weight:700;padding:0.25rem 0.5rem;border-radius:4px;border:none;background:transparent;color:var(--gray);cursor:pointer;letter-spacing:0.05em;transition:all 0.15s}
   .lang-btn:hover{color:var(--cyan)}
   .lang-btn.active{background:var(--blue);color:#fff}
-
   .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:6rem 1.5rem 3rem}
   .monitor{width:100%;max-width:680px;background:var(--surface);border:2px solid var(--border);border-radius:12px;box-shadow:0 0 60px rgba(45,106,255,0.15);overflow:hidden}
   .monitor-bar{background:var(--surface2);padding:0.7rem 1rem;display:flex;align-items:center;gap:0.5rem;border-bottom:1px solid var(--border)}
@@ -39,7 +35,6 @@
   .tagline p{color:var(--gray);font-size:1rem;margin-top:0.8rem;line-height:1.7}
   .actions{display:flex;gap:1rem;margin-top:1.5rem;justify-content:center;flex-wrap:wrap}
   .btn-p{background:var(--blue);color:#fff;padding:0.75rem 1.8rem;border-radius:6px;text-decoration:none;font-weight:600;font-size:0.95rem}
-  .btn-g{border:1px solid var(--border);color:var(--cyan);padding:0.75rem 1.8rem;border-radius:6px;text-decoration:none;font-weight:500;font-size:0.95rem;font-family:var(--mono)}
   .stats{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem;padding:2rem 1.5rem;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--surface)}
   .stat-val{font-family:var(--mono);font-size:1.4rem;font-weight:700;color:var(--cyan);text-align:center}
   .stat-lab{font-size:0.75rem;color:var(--gray);margin-top:0.2rem;text-align:center}
@@ -77,8 +72,8 @@
   .cta h2{font-size:clamp(1.6rem,4vw,2.5rem);font-weight:700;margin-bottom:0.8rem}
   .cta p{color:var(--gray);margin-bottom:2rem}
   .cta-meta{font-family:var(--mono);font-size:0.78rem;color:var(--gray);margin-top:1.5rem}
-  .cta-meta a{color:var(--cyan);text-decoration:none}
   footer{padding:1.5rem;text-align:center;border-top:1px solid var(--border);font-family:var(--mono);font-size:0.72rem;color:var(--gray)}
+  footer a{color:var(--cyan);text-decoration:none}
   .ticker-wrap{overflow:hidden;background:#0a0f28;border-top:2px solid var(--cyan);border-bottom:2px solid var(--cyan);padding:0.9rem 0}
   .ticker{display:flex;gap:3rem;white-space:nowrap;animation:ticker 12s linear infinite;font-family:var(--mono);font-size:1rem;font-weight:700;color:var(--cyan);letter-spacing:0.08em}
   .ticker span{flex-shrink:0}
@@ -129,9 +124,7 @@
 </section>
 
 <div class="ticker-wrap">
-  <div class="ticker" id="ticker-inner">
-    <span>⬡ GERICHTSFEST</span><span>⬡ MANIPULATIONSSICHER</span><span>⬡ SHA-256 VERSCHLÜSSELT</span><span>⬡ URHEBERRECHTSSCHUTZ</span><span>⬡ COMPLIANCE READY</span><span>⬡ BFT-KONSENS</span><span>⬡ RUST POWERED</span><span>⬡ UNVERÄNDERBAR</span><span>⬡ GERICHTSFEST</span><span>⬡ MANIPULATIONSSICHER</span><span>⬡ SHA-256 VERSCHLÜSSELT</span><span>⬡ URHEBERRECHTSSCHUTZ</span><span>⬡ COMPLIANCE READY</span><span>⬡ BFT-KONSENS</span><span>⬡ RUST POWERED</span><span>⬡ UNVERÄNDERBAR</span>
-  </div>
+  <div class="ticker" id="ticker-inner"></div>
 </div>
 
 <div class="stats">
@@ -146,7 +139,7 @@
   <div class="eyebrow" data-i18n="demo_eyebrow">Live Demo</div>
   <h2 class="stitle" data-i18n="demo_title">Teste DROS jetzt.</h2>
   <div style="background:rgba(0,212,255,0.1);border:2px solid #00D4FF;border-radius:10px;padding:1.2rem;margin-bottom:1.5rem;font-size:1rem;line-height:1.8;text-align:center">
-    <span id="demo-hint">👉 <strong style="color:#00D4FF">Gib irgendetwas ein</strong> — deinen Namen, einen Satz, eine Zahl, egal was.<br>Drücke dann den Button und du bekommst sofort einen <strong style="color:#00FF88">kryptografischen Beweis-Code mit Zeitstempel</strong>.<br><span style="color:#6B7DB3;font-size:0.88rem">So funktioniert DROS — probiere es jetzt aus!</span></span>
+    <span id="demo-hint"></span>
   </div>
   <textarea class="demo-input" rows="3" data-i18n-placeholder="demo_placeholder"></textarea>
   <button class="demo-btn" onclick="runDemo()" data-i18n="demo_btn">Protokoll erstellen ›</button>
@@ -168,19 +161,19 @@
   <div class="modules">
     <div class="module" onclick="this.classList.toggle('open')">
       <div class="module-header"><span class="module-icon">🎵</span><span class="module-name" data-i18n="mod1_name">Musik &amp; Kreativwirtschaft</span><span class="module-arrow">▶</span></div>
-      <div class="module-body" data-i18n="mod1_body">Beweise lückenlos, wann du einen Track fertiggestellt hast. Kein Plagiatsstreit ohne Grundlage mehr. DROS liefert den unanfechtbaren Zeitstempel — gerichtsfest.</div>
+      <div class="module-body" data-i18n="mod1_body">Beweise lückenlos, wann du einen Track fertiggestellt hast.</div>
     </div>
     <div class="module" onclick="this.classList.toggle('open')">
       <div class="module-header"><span class="module-icon">⚖️</span><span class="module-name" data-i18n="mod2_name">Rechtsberatung &amp; Kanzleien</span><span class="module-arrow">▶</span></div>
-      <div class="module-body" data-i18n="mod2_body">Digitaler Treuhand-Speicher für Beweissicherung. Zeitgestempelte Dokumente für Urheberrechtsprozesse. Kein Richter, kein Gegner kann die Aufzeichnung anfechten.</div>
+      <div class="module-body" data-i18n="mod2_body">Digitaler Treuhand-Speicher für Beweissicherung.</div>
     </div>
     <div class="module" onclick="this.classList.toggle('open')">
       <div class="module-header"><span class="module-icon">📋</span><span class="module-name" data-i18n="mod3_name">Compliance &amp; Governance</span><span class="module-arrow">▶</span></div>
-      <div class="module-body" data-i18n="mod3_body">Revisionssicheres Logging für Entscheidungen und Protokolle. Bei der nächsten Prüfung haben Sie lückenlose, unanfechtbare Nachweise.</div>
+      <div class="module-body" data-i18n="mod3_body">Revisionssicheres Logging für Entscheidungen und Protokolle.</div>
     </div>
     <div class="module" onclick="this.classList.toggle('open')">
       <div class="module-header"><span class="module-icon">📦</span><span class="module-name" data-i18n="mod4_name">Logistik &amp; Supply Chain</span><span class="module-arrow">▶</span></div>
-      <div class="module-body" data-i18n="mod4_body">Manipulationssichere Nachverfolgung von Datenketten und Eigentumsnachweisen. Jede Station ist unveränderbar protokolliert.</div>
+      <div class="module-body" data-i18n="mod4_body">Manipulationssichere Nachverfolgung von Datenketten.</div>
     </div>
   </div>
 </section>
@@ -238,10 +231,32 @@
   <h2 data-i18n="cta_title">Interesse? Meld dich.</h2>
   <p data-i18n="cta_sub">Fragen, Demo-Termin oder Angebot — ich antworte persönlich.</p>
   <a href="mailto:marcomartin1974@mail.de?subject=DROS Anfrage" class="btn-p" data-i18n="cta_btn">E-Mail schreiben</a>
-  <div class="cta-meta">Marco Martin · Frankfurt am Main</div>
+  <div class="cta-meta">Marco Martin · Frankfurt am Main · marcomartin1974@mail.de</div>
 </section>
 
-<footer>© 2026 Marco Martin · <span data-i18n="footer_ip">DROS ist proprietäre Software</span></footer>
+<section class="section" style="border-top:1px solid var(--border)" id="impressum">
+  <div class="eyebrow" data-i18n="impressum_eyebrow">Impressum</div>
+  <h2 class="stitle" data-i18n="impressum_title">Angaben gemäß § 5 TMG</h2>
+  <p style="color:var(--gray);font-size:0.9rem;line-height:2">
+    <strong style="color:var(--white)">Marco Martin</strong><br>
+    Plattenstraße 31-69, Appartement 59, 3. Stock<br>
+    60320 Frankfurt am Main, Deutschland<br><br>
+    <strong style="color:var(--white)" data-i18n="contact_label">Kontakt:</strong><br>
+    marcomartin1974@mail.de
+  </p>
+</section>
+
+<section class="section" style="border-top:1px solid var(--border)" id="datenschutz">
+  <div class="eyebrow" data-i18n="privacy_eyebrow">Datenschutz</div>
+  <h2 class="stitle" data-i18n="privacy_title">Datenschutzerklärung</h2>
+  <p style="color:var(--gray);font-size:0.9rem;line-height:2" data-i18n="privacy_text_html"></p>
+</section>
+
+<footer>
+  © 2026 Marco Martin · <span data-i18n="footer_ip">DROS ist proprietäre Software</span> ·
+  <a href="#impressum" data-i18n="footer_impressum">Impressum</a> ·
+  <a href="#datenschutz" data-i18n="footer_privacy">Datenschutz</a>
+</footer>
 
 <script>
 const TICKER_ITEMS = {
@@ -252,189 +267,132 @@ const TICKER_ITEMS = {
 
 const i18n = {
   de: {
-    nav_cta: 'Kontakt',
-    monitor_title: 'DROS — Kryptografische Beweissicherung',
-    hero_h1_html: 'Der <em>unbestechliche</em><br>digitale Notar.',
-    hero_sub: 'DROS protokolliert jeden Vorgang kryptografisch — unveränderbar, prüfbar, gerichtsfest.',
-    hero_cta: 'Live Demo testen',
+    nav_cta:'Kontakt', monitor_title:'DROS — Kryptografische Beweissicherung',
+    hero_h1_html:'Der <em>unbestechliche</em><br>digitale Notar.',
+    hero_sub:'DROS protokolliert jeden Vorgang kryptografisch — unveränderbar, prüfbar, gerichtsfest.',
+    hero_cta:'Live Demo testen',
     stat1:'Kryptografisch', stat2:'Fault Tolerant', stat3:'Konsistenz', stat4:'Latenz', stat5:'Memory-safe',
-    demo_eyebrow: 'Live Demo',
-    demo_title: 'Teste DROS jetzt.',
-    demo_hint_html: '👉 <strong style="color:#00D4FF">Gib irgendetwas ein</strong> — deinen Namen, einen Satz, eine Zahl, egal was.<br>Drücke dann den Button und du bekommst sofort einen <strong style="color:#00FF88">kryptografischen Beweis-Code mit Zeitstempel</strong>.<br><span style="color:#6B7DB3;font-size:0.88rem">So funktioniert DROS — probiere es jetzt aus!</span>',
-    demo_placeholder: 'Schreib irgendetwas hier rein — deinen Namen, einen Satz, egal was...',
-    demo_btn: 'Protokoll erstellen ›',
-    use_eyebrow: 'Einsatzbereiche',
-    use_title: 'Wer DROS braucht.',
-    use_sub: 'Tippe auf einen Bereich um mehr zu erfahren.',
-    mod1_name: 'Musik & Kreativwirtschaft',
-    mod1_body: 'Beweise lückenlos, wann du einen Track fertiggestellt hast. Kein Plagiatsstreit ohne Grundlage mehr. DROS liefert den unanfechtbaren Zeitstempel — gerichtsfest.',
-    mod2_name: 'Rechtsberatung & Kanzleien',
-    mod2_body: 'Digitaler Treuhand-Speicher für Beweissicherung. Zeitgestempelte Dokumente für Urheberrechtsprozesse. Kein Richter, kein Gegner kann die Aufzeichnung anfechten.',
-    mod3_name: 'Compliance & Governance',
-    mod3_body: 'Revisionssicheres Logging für Entscheidungen und Protokolle. Bei der nächsten Prüfung haben Sie lückenlose, unanfechtbare Nachweise.',
-    mod4_name: 'Logistik & Supply Chain',
-    mod4_body: 'Manipulationssichere Nachverfolgung von Datenketten und Eigentumsnachweisen. Jede Station ist unveränderbar protokolliert.',
-    price_title: 'Einfach. Transparent.',
-    price_sub: 'Vom Einzelkünstler bis zum Konzern.',
-    per_month: '/Monat',
-    recommended: '★ EMPFOHLEN',
-    solo_target: 'Einzelkünstler & Freelancer',
-    solo_f1:'1.000 Vorgänge/Monat', solo_f2:'SHA-256 Zeitstempel', solo_f3:'PDF-Beweiszertifikat', solo_f4:'E-Mail Support',
-    studio_target: 'Labels, Kanzleien & Agenturen',
-    studio_f1:'50.000 Vorgänge/Monat', studio_f2:'API-Zugang', studio_f3:'5 Nutzer', studio_f4:'SLA 99,9%', studio_f5:'Priority Support',
-    ent_target: 'Konzerne & Behörden',
-    ent_f1:'Unbegrenzte Vorgänge', ent_f2:'On-Premise Deployment', ent_f3:'Custom SLA', ent_f4:'24/7 Support',
-    dev_eyebrow: 'Der Entwickler',
-    dev_bio_html: 'Ich bin Musikproduzent aus Frankfurt am Main — und ich habe DROS aus einer persönlichen Notwendigkeit heraus erschaffen: dem Schutz meiner eigenen Musik vor unbefugter Nutzung und Diebstahl.<br><br>Was als Werkzeug für mich begann, wurde zu einem System das jeder braucht, der digitale Beweise gerichtsfest sichern muss.<br><br>Das Besondere: Die gesamte Architektur, der Code und die Logik von DROS entstanden in einem intensiven Sprint — entwickelt <strong style="color:#00D4FF">ausschließlich am Smartphone</strong>, ohne Studio-Equipment, ohne Entwicklerteam. Nur mit KI-gestützten Tools und einer klaren Vision.<br><br>DROS ist der Beweis, dass Innovation keine teuren Ressourcen braucht — nur die richtige Idee zur richtigen Zeit.',
-    cta_title: 'Interesse? Meld dich.',
-    cta_sub: 'Fragen, Demo-Termin oder Angebot — ich antworte persönlich.',
-    cta_btn: 'E-Mail schreiben',
-    footer_ip: 'DROS ist proprietäre Software',
+    demo_eyebrow:'Live Demo', demo_title:'Teste DROS jetzt.',
+    demo_hint_html:'👉 <strong style="color:#00D4FF">Gib irgendetwas ein</strong> — deinen Namen, einen Satz, eine Zahl, egal was.<br>Drücke dann den Button und du bekommst sofort einen <strong style="color:#00FF88">kryptografischen Beweis-Code mit Zeitstempel</strong>.<br><span style="color:#6B7DB3;font-size:0.88rem">So funktioniert DROS — probiere es jetzt aus!</span>',
+    demo_placeholder:'Schreib irgendetwas hier rein — deinen Namen, einen Satz, egal was...',
+    demo_btn:'Protokoll erstellen ›',
+    use_eyebrow:'Einsatzbereiche', use_title:'Wer DROS braucht.', use_sub:'Tippe auf einen Bereich um mehr zu erfahren.',
+    mod1_name:'Musik & Kreativwirtschaft', mod1_body:'Beweise lückenlos, wann du einen Track fertiggestellt hast. Kein Plagiatsstreit ohne Grundlage mehr. DROS liefert den unanfechtbaren Zeitstempel — gerichtsfest.',
+    mod2_name:'Rechtsberatung & Kanzleien', mod2_body:'Digitaler Treuhand-Speicher für Beweissicherung. Zeitgestempelte Dokumente für Urheberrechtsprozesse.',
+    mod3_name:'Compliance & Governance', mod3_body:'Revisionssicheres Logging für Entscheidungen und Protokolle. Bei der nächsten Prüfung haben Sie lückenlose Nachweise.',
+    mod4_name:'Logistik & Supply Chain', mod4_body:'Manipulationssichere Nachverfolgung von Datenketten. Jede Station ist unveränderbar protokolliert.',
+    price_title:'Einfach. Transparent.', price_sub:'Vom Einzelkünstler bis zum Konzern.',
+    per_month:'/Monat', recommended:'★ EMPFOHLEN',
+    solo_target:'Einzelkünstler & Freelancer', solo_f1:'1.000 Vorgänge/Monat', solo_f2:'SHA-256 Zeitstempel', solo_f3:'PDF-Beweiszertifikat', solo_f4:'E-Mail Support',
+    studio_target:'Labels, Kanzleien & Agenturen', studio_f1:'50.000 Vorgänge/Monat', studio_f2:'API-Zugang', studio_f3:'5 Nutzer', studio_f4:'SLA 99,9%', studio_f5:'Priority Support',
+    ent_target:'Konzerne & Behörden', ent_f1:'Unbegrenzte Vorgänge', ent_f2:'On-Premise Deployment', ent_f3:'Custom SLA', ent_f4:'24/7 Support',
+    dev_eyebrow:'Der Entwickler',
+    dev_bio_html:'Ich bin Musikproduzent aus Frankfurt am Main — und ich habe DROS aus einer persönlichen Notwendigkeit heraus erschaffen: dem Schutz meiner eigenen Musik vor unbefugter Nutzung und Diebstahl.<br><br>Was als Werkzeug für mich begann, wurde zu einem System das jeder braucht, der digitale Beweise gerichtsfest sichern muss.<br><br>Das Besondere: Die gesamte Architektur, der Code und die Logik von DROS entstanden in einem intensiven Sprint — entwickelt <strong style="color:#00D4FF">ausschließlich am Smartphone</strong>, ohne Studio-Equipment, ohne Entwicklerteam.<br><br>DROS ist der Beweis, dass Innovation keine teuren Ressourcen braucht — nur die richtige Idee zur richtigen Zeit.',
+    cta_title:'Interesse? Meld dich.', cta_sub:'Fragen, Demo-Termin oder Angebot — ich antworte persönlich.', cta_btn:'E-Mail schreiben',
+    impressum_eyebrow:'Impressum', impressum_title:'Angaben gemäß § 5 TMG', contact_label:'Kontakt:',
+    privacy_eyebrow:'Datenschutz', privacy_title:'Datenschutzerklärung',
+    privacy_text_html:'<strong style="color:#E8F0FF">1. Verantwortlicher</strong><br>Marco Martin, Plattenstraße 31-69, Appartement 59, 60320 Frankfurt am Main<br>marcomartin1974@mail.de<br><br><strong style="color:#E8F0FF">2. Erhebung von Daten</strong><br>Diese Website erhebt keine personenbezogenen Daten. Die Live-Demo verarbeitet Text ausschließlich lokal in Ihrem Browser. Es werden keine Daten gespeichert oder übertragen.<br><br><strong style="color:#E8F0FF">3. Hosting</strong><br>Gehostet über GitHub Pages (Microsoft). GitHub kann Server-Logdaten erfassen.<br><br><strong style="color:#E8F0FF">4. Ihre Rechte</strong><br>Sie haben das Recht auf Auskunft, Berichtigung und Löschung Ihrer Daten gemäß DSGVO.',
+    footer_ip:'DROS ist proprietäre Software', footer_impressum:'Impressum', footer_privacy:'Datenschutz',
   },
   en: {
-    nav_cta: 'Contact',
-    monitor_title: 'DROS — Cryptographic Proof System',
-    hero_h1_html: 'The <em>incorruptible</em><br>digital notary.',
-    hero_sub: 'DROS records every transaction cryptographically — immutable, verifiable, court-admissible.',
-    hero_cta: 'Try Live Demo',
+    nav_cta:'Contact', monitor_title:'DROS — Cryptographic Proof System',
+    hero_h1_html:'The <em>incorruptible</em><br>digital notary.',
+    hero_sub:'DROS records every transaction cryptographically — immutable, verifiable, court-admissible.',
+    hero_cta:'Try Live Demo',
     stat1:'Cryptographic', stat2:'Fault Tolerant', stat3:'Consistency', stat4:'Latency', stat5:'Memory-safe',
-    demo_eyebrow: 'Live Demo',
-    demo_title: 'Try DROS now.',
-    demo_hint_html: '👉 <strong style="color:#00D4FF">Enter anything</strong> — your name, a sentence, a number, whatever.<br>Press the button and instantly receive a <strong style="color:#00FF88">cryptographic proof code with timestamp</strong>.<br><span style="color:#6B7DB3;font-size:0.88rem">This is how DROS works — try it now!</span>',
-    demo_placeholder: 'Type anything here — your name, a sentence, anything...',
-    demo_btn: 'Create proof record ›',
-    use_eyebrow: 'Use Cases',
-    use_title: 'Who needs DROS.',
-    use_sub: 'Tap a category to learn more.',
-    mod1_name: 'Music & Creative Industry',
-    mod1_body: 'Prove conclusively when you finished a track. No more plagiarism disputes without foundation. DROS delivers the irrefutable timestamp — court-admissible.',
-    mod2_name: 'Legal Advice & Law Firms',
-    mod2_body: 'Digital escrow storage for evidence preservation. Time-stamped documents for copyright proceedings. No judge, no opponent can challenge the record.',
-    mod3_name: 'Compliance & Governance',
-    mod3_body: 'Audit-proof logging for decisions and minutes. At the next audit you have complete, irrefutable evidence.',
-    mod4_name: 'Logistics & Supply Chain',
-    mod4_body: 'Tamper-proof tracking of data chains and ownership records. Every station is immutably logged.',
-    price_title: 'Simple. Transparent.',
-    price_sub: 'From solo artist to enterprise.',
-    per_month: '/month',
-    recommended: '★ RECOMMENDED',
-    solo_target: 'Solo artists & Freelancers',
-    solo_f1:'1,000 records/month', solo_f2:'SHA-256 timestamp', solo_f3:'PDF proof certificate', solo_f4:'Email support',
-    studio_target: 'Labels, law firms & agencies',
-    studio_f1:'50,000 records/month', studio_f2:'API access', studio_f3:'5 users', studio_f4:'SLA 99.9%', studio_f5:'Priority support',
-    ent_target: 'Corporations & Government',
-    ent_f1:'Unlimited records', ent_f2:'On-premise deployment', ent_f3:'Custom SLA', ent_f4:'24/7 support',
-    dev_eyebrow: 'The Developer',
-    dev_bio_html: 'I am a music producer from Frankfurt am Main — and I created DROS out of personal necessity: to protect my own music from unauthorized use and theft.<br><br>What began as a tool for myself became a system that anyone needs who must secure digital evidence in a court-admissible way.<br><br>What makes it special: the entire architecture, code, and logic of DROS was built in an intensive sprint — developed <strong style="color:#00D4FF">exclusively on a smartphone</strong>, without studio equipment, without a development team. Just AI-powered tools and a clear vision.<br><br>DROS is proof that innovation does not require expensive resources — only the right idea at the right time.',
-    cta_title: 'Interested? Get in touch.',
-    cta_sub: 'Questions, demo appointment, or quote — I respond personally.',
-    cta_btn: 'Send email',
-    footer_ip: 'DROS is proprietary software',
+    demo_eyebrow:'Live Demo', demo_title:'Try DROS now.',
+    demo_hint_html:'👉 <strong style="color:#00D4FF">Enter anything</strong> — your name, a sentence, a number, whatever.<br>Press the button and instantly receive a <strong style="color:#00FF88">cryptographic proof code with timestamp</strong>.<br><span style="color:#6B7DB3;font-size:0.88rem">This is how DROS works — try it now!</span>',
+    demo_placeholder:'Type anything here — your name, a sentence, anything...',
+    demo_btn:'Create proof record ›',
+    use_eyebrow:'Use Cases', use_title:'Who needs DROS.', use_sub:'Tap a category to learn more.',
+    mod1_name:'Music & Creative Industry', mod1_body:'Prove conclusively when you finished a track. No more plagiarism disputes. DROS delivers the irrefutable timestamp — court-admissible.',
+    mod2_name:'Legal Advice & Law Firms', mod2_body:'Digital escrow storage for evidence preservation. Time-stamped documents for copyright proceedings.',
+    mod3_name:'Compliance & Governance', mod3_body:'Audit-proof logging for decisions and minutes. At the next audit you have complete, irrefutable evidence.',
+    mod4_name:'Logistics & Supply Chain', mod4_body:'Tamper-proof tracking of data chains. Every station is immutably logged.',
+    price_title:'Simple. Transparent.', price_sub:'From solo artist to enterprise.',
+    per_month:'/month', recommended:'★ RECOMMENDED',
+    solo_target:'Solo artists & Freelancers', solo_f1:'1,000 records/month', solo_f2:'SHA-256 timestamp', solo_f3:'PDF proof certificate', solo_f4:'Email support',
+    studio_target:'Labels, law firms & agencies', studio_f1:'50,000 records/month', studio_f2:'API access', studio_f3:'5 users', studio_f4:'SLA 99.9%', studio_f5:'Priority support',
+    ent_target:'Corporations & Government', ent_f1:'Unlimited records', ent_f2:'On-premise deployment', ent_f3:'Custom SLA', ent_f4:'24/7 support',
+    dev_eyebrow:'The Developer',
+    dev_bio_html:'I am a music producer from Frankfurt am Main — and I created DROS out of personal necessity: to protect my own music from unauthorized use and theft.<br><br>What began as a tool for myself became a system that anyone needs who must secure digital evidence in a court-admissible way.<br><br>The whole architecture and code was built in an intensive sprint — developed <strong style="color:#00D4FF">exclusively on a smartphone</strong>, without a development team.<br><br>DROS is proof that innovation does not require expensive resources — only the right idea at the right time.',
+    cta_title:'Interested? Get in touch.', cta_sub:'Questions, demo appointment, or quote — I respond personally.', cta_btn:'Send email',
+    impressum_eyebrow:'Legal Notice', impressum_title:'Legal Notice (Impressum)', contact_label:'Contact:',
+    privacy_eyebrow:'Privacy', privacy_title:'Privacy Policy',
+    privacy_text_html:'<strong style="color:#E8F0FF">1. Controller</strong><br>Marco Martin, Plattenstraße 31-69, Apt. 59, 60320 Frankfurt am Main, Germany<br>marcomartin1974@mail.de<br><br><strong style="color:#E8F0FF">2. Data Collection</strong><br>This website does not collect personal data. The live demo processes text exclusively in your browser. No data is stored or transmitted.<br><br><strong style="color:#E8F0FF">3. Hosting</strong><br>Hosted via GitHub Pages (Microsoft). GitHub may collect server log data.<br><br><strong style="color:#E8F0FF">4. Your Rights</strong><br>You have the right to access, rectify and delete your data under GDPR.',
+    footer_ip:'DROS is proprietary software', footer_impressum:'Legal Notice', footer_privacy:'Privacy Policy',
   },
   it: {
-    nav_cta: 'Contatto',
-    monitor_title: 'DROS — Sistema di Prova Crittografica',
-    hero_h1_html: 'Il notaio digitale<br><em>incorruttibile</em>.',
-    hero_sub: 'DROS registra ogni operazione crittograficamente — immutabile, verificabile, con valore legale.',
-    hero_cta: 'Prova la Demo Live',
+    nav_cta:'Contatto', monitor_title:'DROS — Sistema di Prova Crittografica',
+    hero_h1_html:'Il notaio digitale<br><em>incorruttibile</em>.',
+    hero_sub:'DROS registra ogni operazione crittograficamente — immutabile, verificabile, con valore legale.',
+    hero_cta:'Prova la Demo Live',
     stat1:'Crittografico', stat2:'Fault Tolerant', stat3:'Consistenza', stat4:'Latenza', stat5:'Memory-safe',
-    demo_eyebrow: 'Demo Live',
-    demo_title: 'Prova DROS adesso.',
-    demo_hint_html: '👉 <strong style="color:#00D4FF">Inserisci qualcosa</strong> — il tuo nome, una frase, un numero, qualsiasi cosa.<br>Premi il pulsante e ricevi subito un <strong style="color:#00FF88">codice di prova crittografico con timestamp</strong>.<br><span style="color:#6B7DB3;font-size:0.88rem">Così funziona DROS — provalo adesso!</span>',
-    demo_placeholder: 'Scrivi qualcosa qui — il tuo nome, una frase, qualsiasi cosa...',
-    demo_btn: 'Crea registro di prova ›',
-    use_eyebrow: 'Casi d\'uso',
-    use_title: 'Chi ha bisogno di DROS.',
-    use_sub: 'Tocca un\'area per saperne di più.',
-    mod1_name: 'Musica & Industria Creativa',
-    mod1_body: 'Dimostra in modo inconfutabile quando hai completato un brano. Nessuna disputa per plagio senza fondamento. DROS fornisce il timestamp irrefutabile — con valore legale.',
-    mod2_name: 'Consulenza Legale & Studi Legali',
-    mod2_body: 'Archivio fiduciario digitale per la conservazione delle prove. Documenti con marca temporale per procedimenti sul diritto d\'autore. Nessun giudice, nessun avversario può contestare la registrazione.',
-    mod3_name: 'Compliance & Governance',
-    mod3_body: 'Logging a prova di revisione per decisioni e verbali. Al prossimo controllo avrete prove complete e inconfutabili.',
-    mod4_name: 'Logistica & Supply Chain',
-    mod4_body: 'Tracciamento antimanomissione di catene di dati e titoli di proprietà. Ogni stazione è registrata in modo immutabile.',
-    price_title: 'Semplice. Trasparente.',
-    price_sub: 'Dal singolo artista all\'azienda.',
-    per_month: '/mese',
-    recommended: '★ CONSIGLIATO',
-    solo_target: 'Artisti singoli & Freelancer',
-    solo_f1:'1.000 operazioni/mese', solo_f2:'Timestamp SHA-256', solo_f3:'Certificato di prova PDF', solo_f4:'Supporto email',
-    studio_target: 'Label, studi legali & agenzie',
-    studio_f1:'50.000 operazioni/mese', studio_f2:'Accesso API', studio_f3:'5 utenti', studio_f4:'SLA 99,9%', studio_f5:'Supporto prioritario',
-    ent_target: 'Aziende & Pubbliche Amministrazioni',
-    ent_f1:'Operazioni illimitate', ent_f2:'Deployment on-premise', ent_f3:'SLA personalizzato', ent_f4:'Supporto 24/7',
-    dev_eyebrow: 'Lo Sviluppatore',
-    dev_bio_html: 'Sono un produttore musicale di Francoforte sul Meno — e ho creato DROS per una necessità personale: proteggere la mia musica da usi non autorizzati e furti.<br><br>Quello che è iniziato come uno strumento per me è diventato un sistema di cui ha bisogno chiunque debba conservare prove digitali con valore legale.<br><br>La cosa speciale: l\'intera architettura, il codice e la logica di DROS sono stati sviluppati in uno sprint intensivo — creato <strong style="color:#00D4FF">esclusivamente con uno smartphone</strong>, senza attrezzatura da studio, senza un team di sviluppo. Solo strumenti AI e una visione chiara.<br><br>DROS è la prova che l\'innovazione non richiede risorse costose — solo l\'idea giusta al momento giusto.',
-    cta_title: 'Interessato? Scrivimi.',
-    cta_sub: 'Domande, appuntamento demo o preventivo — rispondo personalmente.',
-    cta_btn: 'Scrivi email',
-    footer_ip: 'DROS è software proprietario',
+    demo_eyebrow:'Demo Live', demo_title:'Prova DROS adesso.',
+    demo_hint_html:'👉 <strong style="color:#00D4FF">Inserisci qualcosa</strong> — il tuo nome, una frase, un numero, qualsiasi cosa.<br>Premi il pulsante e ricevi subito un <strong style="color:#00FF88">codice di prova crittografico con timestamp</strong>.<br><span style="color:#6B7DB3;font-size:0.88rem">Così funziona DROS — provalo adesso!</span>',
+    demo_placeholder:'Scrivi qualcosa qui — il tuo nome, una frase, qualsiasi cosa...',
+    demo_btn:'Crea registro di prova ›',
+    use_eyebrow:"Casi d'uso", use_title:'Chi ha bisogno di DROS.', use_sub:"Tocca un'area per saperne di più.",
+    mod1_name:'Musica & Industria Creativa', mod1_body:"Dimostra in modo inconfutabile quando hai completato un brano. Nessuna disputa per plagio. DROS fornisce il timestamp irrefutabile — con valore legale.",
+    mod2_name:'Consulenza Legale & Studi Legali', mod2_body:"Archivio fiduciario digitale per la conservazione delle prove. Documenti con marca temporale per procedimenti sul diritto d'autore.",
+    mod3_name:'Compliance & Governance', mod3_body:'Logging a prova di revisione per decisioni e verbali. Al prossimo controllo avrete prove complete.',
+    mod4_name:'Logistica & Supply Chain', mod4_body:'Tracciamento antimanomissione di catene di dati. Ogni stazione è registrata in modo immutabile.',
+    price_title:'Semplice. Trasparente.', price_sub:"Dal singolo artista all'azienda.",
+    per_month:'/mese', recommended:'★ CONSIGLIATO',
+    solo_target:'Artisti singoli & Freelancer', solo_f1:'1.000 operazioni/mese', solo_f2:'Timestamp SHA-256', solo_f3:'Certificato di prova PDF', solo_f4:'Supporto email',
+    studio_target:'Label, studi legali & agenzie', studio_f1:'50.000 operazioni/mese', studio_f2:'Accesso API', studio_f3:'5 utenti', studio_f4:'SLA 99,9%', studio_f5:'Supporto prioritario',
+    ent_target:'Aziende & Pubbliche Amministrazioni', ent_f1:'Operazioni illimitate', ent_f2:'Deployment on-premise', ent_f3:'SLA personalizzato', ent_f4:'Supporto 24/7',
+    dev_eyebrow:'Lo Sviluppatore',
+    dev_bio_html:"Sono un produttore musicale di Francoforte — e ho creato DROS per una necessità personale: proteggere la mia musica da usi non autorizzati.<br><br>Quello che è iniziato come uno strumento per me è diventato un sistema di cui ha bisogno chiunque debba conservare prove digitali con valore legale.<br><br>L'intera architettura è stata sviluppata in uno sprint intensivo — creato <strong style="color:#00D4FF">esclusivamente con uno smartphone</strong>, senza un team di sviluppo.<br><br>DROS è la prova che l'innovazione non richiede risorse costose — solo l'idea giusta al momento giusto.",
+    cta_title:'Interessato? Scrivimi.', cta_sub:'Domande, appuntamento demo o preventivo — rispondo personalmente.', cta_btn:'Scrivi email',
+    impressum_eyebrow:'Note Legali', impressum_title:'Informazioni legali', contact_label:'Contatto:',
+    privacy_eyebrow:'Privacy', privacy_title:'Informativa sulla Privacy',
+    privacy_text_html:'<strong style="color:#E8F0FF">1. Titolare</strong><br>Marco Martin, Plattenstraße 31-69, Apt. 59, 60320 Francoforte sul Meno, Germania<br>marcomartin1974@mail.de<br><br><strong style="color:#E8F0FF">2. Raccolta dati</strong><br>Questo sito non raccoglie dati personali. La demo live elabora il testo esclusivamente nel browser. Nessun dato viene memorizzato o trasmesso.<br><br><strong style="color:#E8F0FF">3. Hosting</strong><br>Ospitato tramite GitHub Pages (Microsoft).<br><br><strong style="color:#E8F0FF">4. I tuoi diritti</strong><br>Hai il diritto di accedere, rettificare ed eliminare i tuoi dati ai sensi del GDPR.',
+    footer_ip:'DROS è software proprietario', footer_impressum:'Note Legali', footer_privacy:'Privacy',
   }
 };
 
 let currentLang = 'de';
 
 function buildTicker(lang) {
-  const items = TICKER_ITEMS[lang];
-  const doubled = [...items, ...items];
-  return doubled.map(t => `<span>${t}</span>`).join('');
+  const items = [...TICKER_ITEMS[lang], ...TICKER_ITEMS[lang]];
+  return items.map(t => `<span>${t}</span>`).join('');
 }
 
 function setLang(lang) {
   currentLang = lang;
   const t = i18n[lang];
-
-  // Update active button
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.classList.toggle('active', btn.textContent === lang.toUpperCase());
   });
-
-  // Update html lang attribute
   document.documentElement.lang = lang;
-
-  // Update all plain text nodes
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
-    if (key.endsWith('_html')) {
-      el.innerHTML = t[key] || '';
-    } else {
-      el.textContent = t[key] || '';
-    }
+    if (key.endsWith('_html')) el.innerHTML = t[key] || '';
+    else el.textContent = t[key] || '';
   });
-
-  // Update placeholders
   document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-    const key = el.getAttribute('data-i18n-placeholder');
-    el.placeholder = t[key] || '';
+    el.placeholder = t[el.getAttribute('data-i18n-placeholder')] || '';
   });
-
-  // Update ticker
   document.getElementById('ticker-inner').innerHTML = buildTicker(lang);
-
-  // Update demo hint
   const hint = document.getElementById('demo-hint');
   if (hint) hint.innerHTML = t['demo_hint_html'] || '';
 }
 
-// Init on load
 setLang('de');
 
 async function runDemo() {
   const input = document.querySelector('.demo-input').value.trim();
   if (!input) {
     const alerts = { de:'Bitte zuerst Text eingeben.', en:'Please enter some text first.', it:'Inserisci prima del testo.' };
-    alert(alerts[currentLang]);
-    return;
+    alert(alerts[currentLang]); return;
   }
   const encoder = new TextEncoder();
   const data = encoder.encode(input + Date.now());
   const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-  const hashArray = Array.from(new Uint8Array(hashBuffer));
-  const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-  const now = new Date().toISOString();
+  const hashHex = Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2,'0')).join('');
   document.getElementById('dr-input').textContent = input;
-  document.getElementById('dr-time').textContent = now;
+  document.getElementById('dr-time').textContent = new Date().toISOString();
   document.getElementById('dr-hash').textContent = hashHex;
   document.getElementById('demo-result').style.display = 'block';
   document.getElementById('demo-result').scrollIntoView({behavior:'smooth'});
