@@ -1,79 +1,338 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DROS v5.5 — Digitaler Notar</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;700&display=swap');
-  *{box-sizing:border-box;margin:0;padding:0}
-  :root{--bg:#0a0d1a;--surface:#0f1526;--border:rgba(100,180,255,0.15);--blue:#2D6AFF;--cyan:#00D4FF;--green:#00FF88;--white:#E8F0FF;--gray:#6B7DB3;--mono:'JetBrains Mono',monospace;--sans:'Inter',sans-serif}
-  body{font-family:var(--sans);background:var(--bg);color:var(--white)}
-  nav{padding:1rem 1.5rem;display:flex;justify-content:space-between;border-bottom:1px solid var(--border)}
-  .logo{font-family:var(--mono);font-weight:700;color:var(--cyan)}
-  .hero{padding:4rem 1.5rem;text-align:center}
-  .monitor{max-width:600px;margin:2rem auto;background:var(--surface);border:2px solid var(--border);padding:2rem;border-radius:12px;font-family:var(--mono);text-align:left}
-  .ticker-wrap{background:#0a0f28;border:2px solid var(--cyan);padding:1rem;margin:2rem 0;text-align:center;color:var(--cyan);font-weight:700}
-  .section{padding:2rem 1.5rem;max-width:760px;margin:0 auto}
-  .module{background:var(--surface);border:1px solid var(--border);border-radius:8px;margin-bottom:1rem;padding:1rem;cursor:pointer}
-  .module-body{display:none;margin-top:1rem;color:var(--gray);border-top:1px solid var(--border);padding-top:1rem}
-  .module.open .module-body{display:block}
-  .demo-box{background:rgba(0,212,255,0.1);border:2px solid var(--cyan);padding:1.5rem;border-radius:10px;margin:2rem 0}
-  .demo-input{width:100%;padding:10px;margin-top:10px;background:var(--bg);color:white;border:1px solid var(--border)}
-  .demo-btn{margin-top:10px;padding:10px 20px;background:var(--blue);color:white;border:none;cursor:pointer}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DROS v5.5 — Digitaler Notar</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;700&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg: #0a0d1a;
+            --surface: #0f1526;
+            --surface2: #151d35;
+            --border: rgba(100, 180, 255, 0.15);
+            --blue: #2D6AFF;
+            --cyan: #00D4FF;
+            --green: #00FF88;
+            --white: #E8F0FF;
+            --gray: #6B7DB3;
+            --mono: 'JetBrains Mono', monospace;
+            --sans: 'Inter', sans-serif;
+        }
+
+        body {
+            font-family: var(--sans);
+            background-color: var(--bg);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.5rem;
+            background-color: rgba(10, 13, 26, 0.95);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-family: var(--mono);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--cyan);
+        }
+
+        .logo span {
+            color: var(--blue);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .nav-cta {
+            background-color: var(--blue);
+            color: #fff;
+            padding: 0.45rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.82rem;
+            font-weight: 600;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 6rem 1.5rem 3rem;
+        }
+
+        .monitor {
+            width: 100%;
+            max-width: 680px;
+            background-color: var(--surface);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            box-shadow: 0 0 60px rgba(45, 106, 255, 0.15);
+            overflow: hidden;
+        }
+
+        .monitor-bar {
+            background-color: var(--surface2);
+            padding: 0.7rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .mdot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .monitor-title {
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            color: var(--gray);
+            margin-left: 0.5rem;
+            flex: 1;
+            text-align: center;
+        }
+
+        .monitor-body {
+            padding: 2rem 1.5rem;
+        }
+
+        .tl {
+            font-family: var(--mono);
+            font-size: 0.82rem;
+            line-height: 2;
+        }
+
+        .tp {
+            color: var(--green);
+        }
+
+        .tk {
+            color: var(--cyan);
+        }
+
+        .tv {
+            color: var(--green);
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 14px;
+            background-color: var(--cyan);
+            vertical-align: middle;
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        .section {
+            padding: 4rem 1.5rem;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        .stitle {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        .module {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            margin-bottom: 0.8rem;
+        }
+
+        .module-header {
+            padding: 1rem 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-family: var(--mono);
+            font-size: 0.88rem;
+        }
+
+        .module-name {
+            color: var(--cyan);
+            flex: 1;
+        }
+
+        .module-body {
+            display: none;
+            padding: 1.2rem;
+            font-size: 0.88rem;
+            color: var(--gray);
+            line-height: 1.7;
+            border-top: 1px solid var(--border);
+        }
+
+        .module.open .module-body {
+            display: block;
+        }
+
+        .demo-section {
+            padding: 4rem 1.5rem;
+            border-top: 1px solid var(--border);
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        .demo-input {
+            width: 100%;
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem;
+            color: var(--white);
+            font-family: var(--mono);
+            margin-bottom: 1rem;
+        }
+
+        .demo-btn {
+            background-color: var(--blue);
+            color: #fff;
+            padding: 0.8rem 2rem;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .ticker-wrap {
+            overflow: hidden;
+            background-color: #0a0f28;
+            border-top: 2px solid var(--cyan);
+            border-bottom: 2px solid var(--cyan);
+            padding: 0.9rem 0;
+        }
+
+        .ticker {
+            display: flex;
+            gap: 3rem;
+            white-space: nowrap;
+            animation: ticker 12s linear infinite;
+            font-family: var(--mono);
+            font-weight: 700;
+            color: var(--cyan);
+        }
+
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        footer {
+            padding: 1.5rem;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            color: var(--gray);
+        }
+    </style>
 </head>
 <body>
-<nav><div class="logo">DR<span>OS</span> v5.5</div></nav>
 
-<section class="hero">
-  <h1>Der <em>unbestechliche</em> digitale Notar.</h1>
-  <p>DROS protokolliert jeden Vorgang kryptografisch — unveränderbar, prüfbar, gerichtsfest.</p>
-  <div class="monitor">
-    $ dros commit "System Ready"<br>
-    status: FINALIZED · IMMUTABLE ✓
-  </div>
-</section>
+    <nav>
+        <div class="logo">DR<span>OS</span></div>
+        <div class="nav-right">
+            <a href="mailto:marcomartin1974@mail.de" class="nav-cta">Kontakt</a>
+        </div>
+    </nav>
 
-<div class="ticker-wrap">⬡ GERICHTSFEST ⬡ MANIPULATIONSSICHER ⬡ SHA-256 VERSCHLÜSSELT</div>
+    <section class="hero">
+        <div class="monitor">
+            <div class="monitor-bar">
+                <span class="mdot" style="background:#FF5F57"></span>
+                <span class="mdot" style="background:#FEBC2E"></span>
+                <span class="mdot" style="background:#28C840"></span>
+                <span class="monitor-title">DROS — Kryptografische Beweissicherung</span>
+            </div>
+            <div class="monitor-body">
+                <div class="tl"># DROS v5.5 — Byzantine Fault Tolerant Ledger</div>
+                <div class="tl"><span class="tp">$ </span>dros commit "System Ready"</div>
+                <div class="tl"><span class="tk">status </span> <span class="tv">FINALIZED · IMMUTABLE ✓</span></div>
+                <div class="tl"><span class="tp">$ </span><span class="cursor"></span></div>
+            </div>
+        </div>
+    </section>
 
-<section class="section">
-  <h2>Live Demo</h2>
-  <div class="demo-box">
-    👉 <strong>Gib irgendetwas ein</strong> — deinen Namen, einen Satz, eine Zahl, egal was.<br>
-    Drücke dann den Button und du bekommst sofort einen <strong>kryptografischen Beweis-Code mit Zeitstempel</strong>.<br>
-    <span style="color:var(--gray)">So funktioniert DROS — probiere es jetzt aus!</span>
-    <textarea class="demo-input" id="d-in" rows="2" placeholder="Schreib hier etwas rein..."></textarea>
-    <button class="demo-btn" onclick="run()">Protokoll erstellen ›</button>
-  </div>
-  <div id="d-res" style="display:none;background:var(--surface);padding:1rem;border:1px solid var(--green)">
-    <strong>Ergebnis:</strong><br>Code: <span id="out"></span>
-  </div>
-</section>
+    <div class="ticker-wrap">
+        <div class="ticker">
+            <span>⬡ GERICHTSFEST</span>
+            <span>⬡ MANIPULATIONSSICHER</span>
+            <span>⬡ SHA-256 VERSCHLÜSSELT</span>
+            <span>⬡ COMPLIANCE READY</span>
+        </div>
+    </div>
 
-<section class="section">
-  <h2>DROS Infos & Rechtliches</h2>
-  <div class="module" onclick="this.classList.toggle('open')">
-    <div>Was ist DROS? ▶</div>
-    <div class="module-body">DROS ist ein gerichtsfestes Protokollierungssystem für digitale Beweise, das auf einer unveränderbaren BFT-Architektur basiert.</div>
-  </div>
-  <div class="module" onclick="this.classList.toggle('open')">
-    <div>Impressum ▶</div>
-    <div class="module-body">Marco Martin<br>Frankfurt am Main<br>E-Mail: marcomartin1974@mail.de</div>
-  </div>
-  <div class="module" onclick="this.classList.toggle('open')">
-    <div>Datenschutz ▶</div>
-    <div class="module-body">Ihre Privatsphäre hat höchste Priorität. DROS speichert keine personenbezogenen Daten im Ledger. Alle Hashes sind anonymisiert.</div>
-  </div>
-</section>
+    <section class="section">
+        <h2 class="stitle">DROS Infos & Rechtliches</h2>
+        <div class="module" onclick="this.classList.toggle('open')">
+            <div class="module-header">
+                <span class="module-name">Was ist DROS?</span>
+                <span>▶</span>
+            </div>
+            <div class="module-body">DROS ist ein hochsicheres Protokollierungssystem für digitale Beweise, das auf einer unveränderbaren BFT-Architektur basiert.</div>
+        </div>
+        <div class="module" onclick="this.classList.toggle('open')">
+            <div class="module-header">
+                <span class="module-name">Impressum</span>
+                <span>▶</span>
+            </div>
+            <div class="module-body">Marco Martin<br>Frankfurt am Main<br>E-Mail: marcomartin1974@mail.de</div>
+        </div>
+        <div class="module" onclick="this.classList.toggle('open')">
+            <div class="module-header">
+                <span class="module-name">Datenschutz</span>
+                <span>▶</span>
+            </div>
+            <div class="module-body">DROS speichert keine personenbezogenen Daten im Ledger. Alle Hashes sind anonymisiert.</div>
+        </div>
+    </section>
 
-<footer>© 2026 Marco Martin</footer>
+    <section class="demo-section">
+        <h2 class="stitle">Live Demo</h2>
+        <textarea class="demo-input" rows="3" placeholder="Hier Text eingeben..."></textarea>
+        <button class="demo-btn">Protokoll erstellen ›</button>
+    </section>
 
-<script>
-function run() {
-    document.getElementById('out').innerText = Math.random().toString(36).substring(2, 15);
-    document.getElementById('d-res').style.display = 'block';
-}
-</script>
+    <footer>
+        © 2026 Marco Martin · DROS ist proprietäre Software
+    </footer>
+
 </body>
 </html>
