@@ -3,132 +3,71 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DROS v5.5 — Digitaler Notar</title>
-<meta property="og:title" content="DROS – Der unbestechliche digitale Notar" />
-<meta property="og:description" content="DROS protokolliert jeden Vorgang kryptografisch — unveränderbar, prüfbar, gerichtsfest." />
-<meta property="og:url" content="https://dros-vault.de" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="https://dros-vault.de/og-image.jpg" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="DROS – Der unbestechliche digitale Notar" />
-<meta name="twitter:description" content="DROS protokolliert jeden Vorgang kryptografisch — unveränderbar, prüfbar, gerichtsfest." />
-<meta name="twitter:image" content="https://dros-vault.de/og-image.jpg" />
-<style>@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;700&display=swap');*{box-sizing:border-box;margin:0;padding:0}:root{--bg:#0a0d1a;--surface:#0f1526;--surface2:#151d35;--border:rgba(100,180,255,0.15);--blue:#2D6AFF;--cyan:#00D4FF;--green:#00FF88;--white:#E8F0FF;--gray:#6B7DB3;--mono:'JetBrains Mono',monospace;--sans:'Inter',sans-serif}body{font-family:var(--sans);background:var(--bg);color:var(--white);overflow-x:hidden}nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;background:rgba(10,13,26,0.95);border-bottom:1px solid var(--border);backdrop-filter:blur(10px)}.logo{font-family:var(--mono);font-size:1.2rem;font-weight:700;color:var(--cyan)}.logo span{color:var(--blue)}.nav-status{font-family:var(--mono);font-size:0.7rem;color:var(--green)}.nav-right{display:flex;align-items:center;gap:0.8rem}.nav-cta{background:var(--blue);color:#fff;padding:0.45rem 1rem;border-radius:4px;text-decoration:none;font-size:0.82rem;font-weight:600}.lang-switcher{display:flex;gap:0.3rem;align-items:center;background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:0.25rem}.lang-btn{font-family:var(--mono);font-size:0.68rem;font-weight:700;padding:0.25rem 0.5rem;border-radius:4px;border:none;background:transparent;color:var(--gray);cursor:pointer;transition:all 0.15s}.lang-btn.active{background:var(--blue);color:#fff}.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:6rem 1.5rem 3rem}.monitor{width:100%;max-width:680px;background:var(--surface);border:2px solid var(--border);border-radius:12px;box-shadow:0 0 60px rgba(45,106,255,0.15);overflow:hidden}.monitor-bar{background:var(--surface2);padding:0.7rem 1rem;display:flex;align-items:center;gap:0.5rem;border-bottom:1px solid var(--border)}.mdot{width:10px;height:10px;border-radius:50%;display:inline-block}.monitor-title{font-family:var(--mono);font-size:0.72rem;color:var(--gray);margin-left:0.5rem;flex:1;text-align:center}.monitor-body{padding:2rem 1.5rem}.tl{font-family:var(--mono);font-size:0.82rem;line-height:2}.tc{color:var(--gray)}.tp{color:var(--green)}.tk{color:var(--cyan)}.tv{color:var(--green)}.th{color:var(--blue);font-size:0.72rem;word-break:break-all}.cursor{display:inline-block;width:8px;height:14px;background:var(--cyan);vertical-align:middle;animation:blink 1s step-end infinite}@keyframes blink{50%{opacity:0}}.tagline{margin-top:2rem;text-align:center}.tagline h1{font-size:clamp(1.8rem,5vw,3rem);font-weight:700;line-height:1.2}.tagline h1 em{font-style:normal;color:var(--cyan)}.tagline p{color:var(--gray);font-size:1rem;margin-top:0.8rem;line-height:1.7}.actions{display:flex;gap:1rem;margin-top:1.5rem;justify-content:center;flex-wrap:wrap}.btn-p{background:var(--blue);color:#fff;padding:0.75rem 1.8rem;border-radius:6px;text-decoration:none;font-weight:600;font-size:0.95rem}.stats{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem;padding:2rem 1.5rem;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--surface)}.stat-val{font-family:var(--mono);font-size:1.4rem;font-weight:700;color:var(--cyan);text-align:center}.stat-lab{font-size:0.75rem;color:var(--gray);margin-top:0.2rem;text-align:center}.section{padding:4rem 1.5rem;max-width:760px;margin:0 auto}.eyebrow{font-family:var(--mono);font-size:0.7rem;color:var(--cyan);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.8rem}.stitle{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700;margin-bottom:0.8rem}.ssub{color:var(--gray);font-size:0.95rem;line-height:1.7;margin-bottom:2rem}.modules{display:flex;flex-direction:column;gap:0.8rem}.module{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden;cursor:pointer;transition:border-color 0.2s}.module:hover{border-color:var(--cyan)}.module-header{padding:1rem 1.2rem;display:flex;align-items:center;justify-content:space-between;font-family:var(--mono);font-size:0.88rem}.module-icon{font-size:1.1rem;margin-right:0.8rem}.module-name{color:var(--cyan);flex:1}.module-arrow{color:var(--gray);transition:transform 0.2s;font-size:0.8rem}.module.open .module-arrow{transform:rotate(90deg)}.module-body{display:none;padding:0.8rem 1.2rem 1rem;font-size:0.88rem;color:var(--gray);line-height:1.7;border-top:1px solid var(--border)}.module.open .module-body{display:block}.pricing-stack{display:flex;flex-direction:column;gap:1rem}.price-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem;position:relative}.price-card.featured{border-color:var(--blue);background:rgba(45,106,255,0.08)}.ftag{position:absolute;top:-10px;left:1rem;background:var(--blue);color:#fff;font-size:0.65rem;font-weight:700;padding:0.2rem 0.7rem;border-radius:100px;font-family:var(--mono)}.price-tier{font-family:var(--mono);font-size:0.75rem;color:var(--gray);text-transform:uppercase;letter-spacing:0.1em}.price-amount{font-size:2rem;font-weight:700;margin:0.4rem 0 0.2rem}.price-amount span{font-size:0.9rem;font-weight:400;color:var(--gray)}.price-target{font-size:0.82rem;color:var(--gray);margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--border)}.price-features{list-style:none;display:flex;flex-direction:column;gap:0.5rem}.price-features li{font-size:0.85rem;display:flex;gap:0.6rem}.price-features li::before{content:"›";color:var(--cyan);font-family:var(--mono)}.demo-section{padding:4rem 1.5rem;border-top:1px solid var(--border);max-width:760px;margin:0 auto}.demo-input{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;color:var(--white);font-family:var(--mono);font-size:0.88rem;resize:none;margin-bottom:1rem;outline:none}.demo-input:focus{border-color:var(--cyan)}.demo-btn{background:var(--blue);color:#fff;padding:0.8rem 2rem;border-radius:6px;border:none;font-size:0.95rem;font-weight:600;cursor:pointer;width:100%}.demo-result{display:none;margin-top:1.5rem;background:var(--surface);border:1px solid var(--green);border-radius:8px;padding:1.5rem;font-family:var(--mono);font-size:0.82rem;line-height:2}.cta{padding:5rem 1.5rem;text-align:center;border-top:1px solid var(--border)}.cta h2{font-size:clamp(1.6rem,4vw,2.5rem);font-weight:700;margin-bottom:0.8rem}.cta p{color:var(--gray);margin-bottom:2rem}.cta-meta{font-family:var(--mono);font-size:0.78rem;color:var(--gray);margin-top:1.5rem}footer{padding:1.5rem;text-align:center;border-top:1px solid var(--border);font-family:var(--mono);font-size:0.72rem;color:var(--gray)}footer a{color:var(--cyan);text-decoration:none}.ticker-wrap{overflow:hidden;background:#0a0f28;border-top:2px solid var(--cyan);border-bottom:2px solid var(--cyan);padding:0.9rem 0}.ticker{display:flex;gap:3rem;white-space:nowrap;animation:ticker 12s linear infinite;font-family:var(--mono);font-size:1rem;font-weight:700;color:var(--cyan);letter-spacing:0.08em}.ticker span{flex-shrink:0}@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}.collapse-btn{background:var(--surface);border:1px solid var(--border);color:var(--cyan);padding:0.8rem 1.5rem;border-radius:8px;font-family:var(--mono);font-size:0.88rem;cursor:pointer;width:100%;text-align:left;margin-bottom:0.5rem}.collapse-content{display:none;padding:1.5rem;background:var(--surface);border:1px solid var(--border);border-radius:8px;margin-bottom:0.5rem}</style>
+<title>SONIC HYBRID // CHARTS</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;700;900&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+    --bg: #050505;
+    --surface: #101010;
+    --surface2: #1a1a1a;
+    --border: #ff4500;
+    --blue: #0066ff;
+    --white: #ffffff;
+    --gray: #888888;
+    --mono:'JetBrains Mono',monospace;
+    --sans:'Inter',sans-serif
+}
+body{font-family:var(--sans);background:var(--bg);color:var(--white);background-image:linear-gradient(rgba(255,69,0,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,69,0,0.03) 1px, transparent 1px);background-size:40px 40px}
+nav{position:fixed;top:0;left:0;right:0;padding:1.5rem 2rem;background:#000;border-bottom:3px solid var(--border);display:flex;justify-content:space-between;align-items:center;z-index:100}
+.logo{font-family:var(--mono);font-size:1.8rem;font-weight:900;color:var(--white);text-transform:uppercase;letter-spacing:1px}
+.logo span{color:var(--border)}
+
+.hero{min-height:95vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding-top:100px}
+
+.turntable{width:280px;height:280px;border-radius:50%;background:#000;border:12px solid var(--surface2);margin-bottom:2rem;position:relative;display:flex;align-items:center;justify-content:center;animation:spin 10s linear infinite;box-shadow:0 0 20px rgba(0,102,255,0.2)}
+.turntable::after{content:'';position:absolute;width:40px;height:40px;background:#000;border-radius:50%;border:4px solid var(--border)}
+.turntable img{width:65%;height:65%;border-radius:50%;object-fit:cover}
+@keyframes spin{100%{transform:rotate(360deg)}}
+
+.like-btn{background:var(--blue);color:white;padding:1rem 2.5rem;border:none;font-weight:900;text-transform:uppercase;cursor:pointer;margin-top:1.5rem;font-size:1.1rem;transition:0.3s}
+.like-btn:hover{background:var(--border)}
+
+.demo-section{width:100%;max-width:500px;margin:2rem auto;padding:2rem;background:var(--surface);border:2px solid var(--blue)}
+.demo-input{width:100%;background:black;border:2px solid var(--surface2);padding:1rem;color:white;margin-bottom:1rem;font-family:var(--mono)}
+.collapse-btn{background:var(--surface2);border:2px solid var(--blue);color:white;padding:1rem;width:100%;text-align:left;margin-top:0.5rem;font-weight:bold;cursor:pointer}
+.collapse-content{display:none;padding:1rem;background:var(--surface);border:1px solid var(--blue);margin-top:0.5rem;color:var(--gray);font-size:0.9rem}
+</style>
 </head>
 <body>
+
 <nav>
-<div class="logo">DR<span>OS</span></div>
-<div class="nav-status">&#9679; SYSTEM ONLINE &middot; v5.5</div>
-<div class="nav-right">
-<div class="lang-switcher">
-<button class="lang-btn active" onclick="setLang('de')">DE</button>
-<button class="lang-btn" onclick="setLang('en')">EN</button>
-<button class="lang-btn" onclick="setLang('it')">IT</button>
-</div>
-<a href="mailto:dros-projekt@protonmail.com" class="nav-cta" id="nav-cta">Kontakt</a>
-</div>
+    <div class="logo">SONIC<span>HYBRID</span></div>
+    <div style="color:var(--border);font-family:var(--mono)">LIVE // SYSTEM</div>
 </nav>
+
 <section class="hero">
-<div class="monitor">
-<div class="monitor-bar">
-<span class="mdot" style="background:#FF5F57"></span>
-<span class="mdot" style="background:#FEBC2E"></span>
-<span class="mdot" style="background:#28C840"></span>
-<span class="monitor-title" id="monitor-title">DROS &mdash; Kryptografische Beweissicherung</span>
-</div>
-<div class="monitor-body">
-<div class="tl tc"># DROS v5.5 &mdash; Byzantine Fault Tolerant Ledger</div>
-<div class="tl"><span class="tp">$ </span>dros commit "Track: Neon Dreams v3"</div>
-<div class="tl"><span class="tk">timestamp </span><span class="tv">2026-06-14T16:08:00Z</span></div>
-<div class="tl"><span class="tk">consensus </span><span class="tv">BFT HotStuff &middot; 7/7 nodes &#10003;</span></div>
-<div class="tl"><span class="tk">latency&nbsp;&nbsp;&nbsp;</span><span class="tv">23ms</span></div>
-<div class="tl"><span class="tk">hash&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
-<div class="tl th">a3f8c2d1e9b047562f3a8c1d0e5f9b2a3c7d4e6f1b2c3d4e5f6a7b8</div>
-<div class="tl"><span class="tk">status&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="tv">FINALIZED &middot; IMMUTABLE &#10003;</span></div>
-<div class="tl"><span class="tp">$ </span><span class="cursor"></span></div>
-</div>
-</div>
-<div class="tagline">
-<h1 id="hero-h1"></h1>
-<p id="hero-sub"></p>
-<div class="actions"><a href="#demo" class="btn-p" id="hero-cta">Live Demo testen</a></div>
-</div>
+    <div class="turntable">
+        <img src="https://via.placeholder.com/200" id="album-art" alt="Cover">
+    </div>
+    <h2 id="song-title" style="font-size:2rem;text-transform:uppercase">Songtitel</h2>
+    <p id="artist-name" style="color:var(--blue);font-weight:bold;font-size:1.2rem;margin-bottom:1rem">Künstlername</p>
+    <button class="like-btn" onclick="alert('Support registriert!')">👍 Support diesen Song</button>
 </section>
-<div class="ticker-wrap"><div class="ticker" id="ticker"></div></div>
-<div class="stats">
-<div class="stat"><div class="stat-val">SHA-256</div><div class="stat-lab" id="stat1">Kryptografisch</div></div>
-<div class="stat"><div class="stat-val">BFT</div><div class="stat-lab" id="stat2">Fault Tolerant</div></div>
-<div class="stat"><div class="stat-val">99.97%</div><div class="stat-lab" id="stat3">Konsistenz</div></div>
-<div class="stat"><div class="stat-val">&lt;50ms</div><div class="stat-lab" id="stat4">Latenz</div></div>
-<div class="stat"><div class="stat-val">Rust</div><div class="stat-lab" id="stat5">Memory-safe</div></div>
-</div>
-<section class="demo-section" id="demo">
-<div class="eyebrow" id="demo-eyebrow">Live Demo</div>
-<h2 class="stitle" id="demo-title">Teste DROS jetzt.</h2>
-<div style="background:rgba(0,212,255,0.1);border:2px solid #00D4FF;border-radius:10px;padding:1.2rem;margin-bottom:1.5rem;font-size:1rem;line-height:1.8;text-align:center" id="demo-hint"></div>
-<textarea class="demo-input" rows="3" id="demo-input"></textarea>
-<button class="demo-btn" onclick="runDemo()" id="demo-btn">Protokoll erstellen</button>
-<div class="demo-result" id="demo-result">
-<div class="tl"><span class="tp">$ </span>dros commit "<span id="dr-input"></span>"</div>
-<div class="tl"><span class="tk">timestamp </span><span class="tv" id="dr-time"></span></div>
-<div class="tl"><span class="tk">consensus </span><span class="tv">BFT HotStuff &middot; 7/7 nodes &#10003;</span></div>
-<div class="tl"><span class="tk">latency&nbsp;&nbsp;&nbsp;</span><span class="tv">23ms</span></div>
-<div class="tl"><span class="tk">hash&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
-<div class="tl th" id="dr-hash"></div>
-<div class="tl"><span class="tk">status&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="tv">FINALIZED &middot; IMMUTABLE &#10003;</span></div>
-</div>
+
+<section class="demo-section">
+    <h3 style="margin-bottom:1rem;text-transform:uppercase;color:var(--border)">Song vorschlagen</h3>
+    <input type="text" class="demo-input" placeholder="Künstler">
+    <input type="text" class="demo-input" placeholder="Titel">
+    <button style="background:var(--border);color:white;border:none;padding:1rem;width:100%;font-weight:900;cursor:pointer">EINREICHEN</button>
 </section>
-<section class="section">
-<div class="eyebrow" id="use-eyebrow">Einsatzbereiche</div>
-<h2 class="stitle" id="use-title">Wer DROS braucht.</h2>
-<p class="ssub" id="use-sub">Tippe auf einen Bereich um mehr zu erfahren.</p>
-<div class="modules">
-<div class="module" onclick="this.classList.toggle('open')"><div class="module-header"><span class="module-icon">&#127925;</span><span class="module-name" id="mod1-name">Musik &amp; Kreativwirtschaft</span><span class="module-arrow">&#9658;</span></div><div class="module-body" id="mod1-body">Beweise lueckenlos, wann du einen Track fertiggestellt hast.</div></div>
-<div class="module" onclick="this.classList.toggle('open')"><div class="module-header"><span class="module-icon">&#9878;&#65039;</span><span class="module-name" id="mod2-name">Rechtsberatung &amp; Kanzleien</span><span class="module-arrow">&#9658;</span></div><div class="module-body" id="mod2-body">Digitaler Treuhand-Speicher fuer Beweissicherung.</div></div>
-<div class="module" onclick="this.classList.toggle('open')"><div class="module-header"><span class="module-icon">&#128203;</span><span class="module-name" id="mod3-name">Compliance &amp; Governance</span><span class="module-arrow">&#9658;</span></div><div class="module-body" id="mod3-body">Revisionssicheres Logging fuer Entscheidungen.</div></div>
-<div class="module" onclick="this.classList.toggle('open')"><div class="module-header"><span class="module-icon">&#128230;</span><span class="module-name" id="mod4-name">Logistik &amp; Supply Chain</span><span class="module-arrow">&#9658;</span></div><div class="module-body" id="mod4-body">Manipulationssichere Nachverfolgung von Datenketten.</div></div>
-</div>
+
+<section style="max-width:500px;margin:0 auto 4rem auto;padding:0 2rem">
+    <button class="collapse-btn" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">IMPRESSUM</button>
+    <div class="collapse-content">SONIC HYBRID // Projektleitung. Kontakt: radio-projekt@protonmail.com</div>
+    <button class="collapse-btn" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">DATENSCHUTZ</button>
+    <div class="collapse-content">Keine Datenspeicherung. Nutzung via Spotify-API.</div>
 </section>
-<section class="section" style="border-top:1px solid var(--border)">
-<div class="eyebrow">Pricing</div>
-<h2 class="stitle" id="price-title">Einfach. Transparent.</h2>
-<p class="ssub" id="price-sub">Vom Einzelkuenstler bis zum Konzern.</p>
-<div class="pricing-stack">
-<div class="price-card"><div class="price-tier">Solo</div><div class="price-amount">49 &euro; <span id="pm1">/Monat</span></div><div class="price-target" id="solo-target">Einzelkuenstler &amp; Freelancer</div><ul class="price-features"><li id="s1">1.000 Vorgaenge/Monat</li><li id="s2">SHA-256 Zeitstempel</li><li id="s3">PDF-Beweiszertifikat</li><li id="s4">E-Mail Support</li></ul></div>
-<div class="price-card featured"><div class="ftag" id="recommended">&#9733; EMPFOHLEN</div><div class="price-tier">Studio</div><div class="price-amount">490 &euro; <span id="pm2">/Monat</span></div><div class="price-target" id="studio-target">Labels, Kanzleien &amp; Agenturen</div><ul class="price-features"><li id="st1">50.000 Vorgaenge/Monat</li><li id="st2">API-Zugang</li><li id="st3">5 Nutzer</li><li id="st4">SLA 99,9%</li><li id="st5">Priority Support</li></ul></div>
-<div class="price-card"><div class="price-tier">Enterprise</div><div class="price-amount">ab 9.900 &euro; <span id="pm3">/Monat</span></div><div class="price-target" id="ent-target">Konzerne &amp; Behoerden</div><ul class="price-features"><li id="e1">Unbegrenzte Vorgaenge</li><li id="e2">On-Premise Deployment</li><li id="e3">Custom SLA</li><li id="e4">24/7 Support</li></ul></div>
-</div>
-</section>
-<section class="section" style="border-top:1px solid var(--border)">
-<button class="collapse-btn" id="how-btn" onclick="toggleSection('how-body')">&#128161; Wie funktioniert DROS? &mdash; Einfach erklaert</button>
-<div class="collapse-content" id="how-body">
-<p style="color:var(--gray);font-size:0.95rem;line-height:1.9" id="how-text"></p>
-</div>
-<button class="collapse-btn" onclick="toggleSection('dev-body')" id="dev-btn">&#128100; Der Entwickler</button>
-<div class="collapse-content" id="dev-body">
-<p style="color:var(--gray);font-size:0.95rem;line-height:1.9" id="dev-bio"></p>
-</div>
-<button class="collapse-btn" onclick="toggleSection('impressum-body')" id="imp-btn">Impressum</button>
-<div class="collapse-content" id="impressum-body">
-<p style="color:var(--gray);font-size:0.9rem;line-height:2"><strong style="color:var(--white)">Marco Martin</strong><br>Platenstra&szlig;e 31-69, Appartement 59, 3. Stock<br>60320 Frankfurt am Main, Deutschland<br><br><strong style="color:var(--white)" id="contact-label">Kontakt:</strong><br>dros-projekt@protonmail.com</p>
-</div>
-<button class="collapse-btn" onclick="toggleSection('privacy-body')" id="priv-btn">Datenschutz</button>
-<div class="collapse-content" id="privacy-body">
-<p style="color:var(--gray);font-size:0.9rem;line-height:2" id="privacy-text"></p>
-</div>
-</section>
-<section class="cta">
-<h2 id="cta-title">Interesse? Meld dich.</h2>
-<p id="cta-sub">Fragen, Demo-Termin oder Angebot &mdash; ich antworte persoenlich.</p>
-<a href="mailto:dros-projekt@protonmail.com?subject=DROS Anfrage" class="btn-p" id="cta-btn">E-Mail schreiben</a>
-<div class="cta-meta">Marco Martin &middot; Frankfurt am Main &middot; dros-projekt@protonmail.com</div>
-</section>
-<footer>&copy; 2026 Marco Martin &middot; <span id="footer-ip">DROS ist proprietaere Software</span> &middot; <a href="#" onclick="toggleSection('impressum-body')" id="footer-imp">Impressum</a> &middot; <a href="#" onclick="toggleSection('privacy-body')" id="footer-priv">Datenschutz</a></footer>
-<script>
-var lang = 'de';
-var T = {
-de:{nav_cta:'Kontakt',monitor:'DROS — Kryptografische Beweissicherung',h1:'Der <em>unbestechliche</em><br>digitale Notar.',sub:'DROS protokolliert jeden Vorgang kryptografisch — unveränderbar, prüfbar, gerichtsfest.',cta:'Live Demo testen',s1:'Kryptografisch',s2:'Fault Tolerant',s3:'Konsistenz',s4:'Latenz',s5:'Memory-safe',demoEy:'Live Demo',demoT:'Teste DROS jetzt.',hint:'&#128073; <strong style="color:#00D4FF">Gib irgendetwas ein</strong> — deinen Namen, einen Satz, eine Zahl, egal was.<br>Drücke dann den Button und du bekommst sofort einen <strong style="color:#00FF88">kryptografischen Beweis-Code mit Zeitstempel</strong>.<br><span style="color:#6B7DB3;font-size:0.88rem">So funktioniert DROS — probiere es jetzt aus!</span>',placeholder:'Schreib irgendetwas hier rein — deinen Namen, einen Satz, egal was...',demoBtn:'Protokoll erstellen ›',useEy:'Einsatzbereiche',useT:'Wer DROS braucht.',useSub:'Tippe auf einen Bereich um mehr zu erfahren.',m1n:'Musik & Kreativwirtschaft',m1b:'Beweise lückenlos, wann du einen Track fertiggestellt hast. Kein Plagiatsstreit ohne Grundlage mehr. DROS liefert den unanfechtbaren Zeitstempel — gerichtsfest.',m2n:'Rechtsberatung & Kanzleien',m2b:'Digitaler Treuhand-Speicher für Beweissicherung. Zeitgestempelte Dokumente für Urheberrechtsprozesse.',m3n:'Compliance & Governance',m3b:'Revisionssicheres Logging für Entscheidungen und Protokolle. Bei der nächsten Prüfung haben Sie lückenlose Nachweise.',m4n:'Logistik & Supply Chain',m4b:'Manipulationssichere Nachverfolgung von Datenketten. Jede Station ist unveränderbar protokolliert.',priceT:'Einfach. Transparent.',priceSub:'Vom Einzelkünstler bis zum Konzern.',pm:'/Monat',rec:'★ EMPFOHLEN',soloT:'Einzelkünstler & Freelancer',sf1:'1.000 Vorgänge/Monat',sf2:'SHA-256 Zeitstempel',sf3:'PDF-Beweiszertifikat',sf4:'E-Mail Support',stT:'Labels, Kanzleien & Agenturen',stf1:'50.000 Vorgänge/Monat',stf2:'API-Zugang',stf3:'5 Nutzer',stf4:'SLA 99,9%',stf5:'Priority Support',entT:'Konzerne & Behörden',ef1:'Unbegrenzte Vorgänge',ef2:'On-Premise Deployment',ef3:'Custom SLA',ef4:'24/7 Support',how:'&#128161; Wie funktioniert DROS? — Einfach erklärt',howText:'Stell dir vor, du schreibst heute einen Brief und möchtest in zehn Jahren beweisen können, dass du ihn genau heute geschrieben hast — und dass niemand ihn seitdem verändert hat.<br><br>Genau das macht DROS. Nur digital, und in Sekundenbruchteilen.<br><br><strong style="color:#E8F0FF">So einfach funktioniert es:</strong><br><br><strong style="color:#00D4FF">1. Du gibst etwas ein.</strong><br>Einen Track-Namen, einen Vertrag, eine Idee — irgendetwas das dir wichtig ist.<br><br><strong style="color:#00D4FF">2. DROS erstellt einen digitalen Fingerabdruck.</strong><br>Das System erzeugt aus deinem Text einen einzigartigen Code — ähnlich wie ein DNA-Test, nur für Daten. Dieser Code ist mathematisch einmalig.<br><br><strong style="color:#00D4FF">3. Der Zeitstempel wird gesetzt.</strong><br>DROS speichert exakt wann dieser Fingerabdruck entstanden ist. Dieses Datum lässt sich nachträglich nicht mehr verändern.<br><br><strong style="color:#00D4FF">4. Du hast einen Beweis.</strong><br>Ab sofort kannst du jederzeit beweisen: Dieses Dokument, dieser Song, diese Idee — sie haben genau zu diesem Zeitpunkt existiert.'}
-};
-</script>
+
 </body>
 </html>
