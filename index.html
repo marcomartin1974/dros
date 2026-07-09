@@ -5,69 +5,563 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SONIC HYBRID // CHARTS</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Rajdhani:wght@400;500;600;700&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-    --bg: #050505;
-    --surface: #101010;
-    --surface2: #1a1a1a;
-    --border: #ff4500;
-    --blue: #0066ff;
-    --white: #ffffff;
-    --gray: #888888;
-    --mono:'JetBrains Mono',monospace;
-    --sans:'Inter',sans-serif
+    --bg: #050708;
+    --panel: #0a0f10;
+    --glass: rgba(0,255,214,0.06);
+    --glass-border: rgba(0,255,214,0.35);
+    --cyan: #00fff2;
+    --green: #39ff88;
+    --amber: #ff9d2b;
+    --white: #eafffb;
+    --muted: #6fa39a;
+    --serif:'Orbitron',sans-serif;
+    --sans:'Rajdhani',sans-serif
 }
-body{font-family:var(--sans);background:var(--bg);color:var(--white);background-image:linear-gradient(rgba(255,69,0,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,69,0,0.03) 1px, transparent 1px);background-size:40px 40px}
-nav{position:fixed;top:0;left:0;right:0;padding:1.5rem 2rem;background:#000;border-bottom:3px solid var(--border);display:flex;justify-content:space-between;align-items:center;z-index:100}
-.logo{font-family:var(--mono);font-size:1.8rem;font-weight:900;color:var(--white);text-transform:uppercase;letter-spacing:1px}
-.logo span{color:var(--border)}
+body{
+    font-family:var(--sans);
+    font-weight:500;
+    color:var(--white);
+    background:
+        repeating-linear-gradient(0deg, rgba(0,255,214,0.04) 0px, rgba(0,255,214,0.04) 1px, transparent 1px, transparent 32px),
+        repeating-linear-gradient(90deg, rgba(0,255,214,0.04) 0px, rgba(0,255,214,0.04) 1px, transparent 1px, transparent 32px),
+        radial-gradient(ellipse at 50% -10%, #0d2b28 0%, var(--bg) 55%);
+    min-height:100vh;
+}
+nav{
+    padding:1.5rem 1.75rem;
+    display:flex;justify-content:space-between;align-items:center;
+    background:rgba(0,0,0,0.6);
+    border-bottom:1px solid var(--glass-border);
+    backdrop-filter:blur(10px);
+}
+.logo{font-family:var(--serif);font-weight:800;font-size:1.25rem;letter-spacing:1px;text-transform:uppercase}
+.logo span{color:var(--cyan);text-shadow:0 0 12px rgba(0,255,242,0.7)}
+.live-badge{font-family:var(--serif);font-size:0.75rem;letter-spacing:2px;color:var(--muted);display:flex;align-items:center;gap:0.4rem}
+.live-badge.on-air{color:var(--green);text-shadow:0 0 8px rgba(57,255,136,0.6)}
+.live-dot{width:8px;height:8px;border-radius:50%;background:var(--muted)}
+.live-badge.on-air .live-dot{background:var(--green);box-shadow:0 0 10px var(--green)}
 
-.hero{min-height:95vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding-top:100px}
+.hero{display:flex;flex-direction:column;align-items:center;padding:3rem 1.5rem 2rem}
 
-.turntable{width:280px;height:280px;border-radius:50%;background:#000;border:12px solid var(--surface2);margin-bottom:2rem;position:relative;display:flex;align-items:center;justify-content:center;animation:spin 10s linear infinite;box-shadow:0 0 20px rgba(0,102,255,0.2)}
-.turntable::after{content:'';position:absolute;width:40px;height:40px;background:#000;border-radius:50%;border:4px solid var(--border)}
-.turntable img{width:65%;height:65%;border-radius:50%;object-fit:cover}
-@keyframes spin{100%{transform:rotate(360deg)}}
+.deck-wrap{
+    width:280px;height:280px;
+    border-radius:8px;
+    background:linear-gradient(145deg, rgba(0,255,242,0.35), rgba(0,255,242,0.03));
+    padding:2px;
+    box-shadow:0 0 40px rgba(0,255,242,0.15), 0 20px 60px rgba(0,0,0,0.6);
+    border:1px solid var(--glass-border);
+    position:relative;
+}
+.deck-inner{
+    width:100%;height:100%;
+    border-radius:6px;
+    background:radial-gradient(circle at 50% 45%, #0c1f1e, #030605 75%);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    position:relative;
+    overflow:hidden;
+}
+.deck-label{
+    position:absolute;top:16px;left:0;right:0;text-align:center;
+    font-family:var(--serif);font-size:0.65rem;letter-spacing:4px;color:var(--cyan);font-weight:600;
+    text-shadow:0 0 8px rgba(0,255,242,0.6);
+    transition:opacity 0.4s;
+    z-index:2;
+}
+.deck-inner.loaded .deck-label{opacity:0}
+.deck-dots{position:absolute;top:14px;right:18px;display:flex;gap:5px;z-index:2}
+.deck-dots span{width:5px;height:5px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green);opacity:0.7}
 
-.like-btn{background:var(--blue);color:white;padding:1rem 2.5rem;border:none;font-weight:900;text-transform:uppercase;cursor:pointer;margin-top:1.5rem;font-size:1.1rem;transition:0.3s}
-.like-btn:hover{background:var(--border)}
+.standby-icon{
+    width:64px;height:64px;border-radius:50%;
+    border:2px solid var(--glass-border);
+    display:flex;align-items:center;justify-content:center;
+    opacity:0.4;
+    transition:opacity 0.3s;
+}
+.standby-icon::after{content:'';width:16px;height:16px;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px var(--cyan)}
+.deck-inner.loaded .standby-icon,.deck-inner.loading .standby-icon{opacity:0;pointer-events:none}
 
-.demo-section{width:100%;max-width:500px;margin:2rem auto;padding:2rem;background:var(--surface);border:2px solid var(--blue)}
-.demo-input{width:100%;background:black;border:2px solid var(--surface2);padding:1rem;color:white;margin-bottom:1rem;font-family:var(--mono)}
-.collapse-btn{background:var(--surface2);border:2px solid var(--blue);color:white;padding:1rem;width:100%;text-align:left;margin-top:0.5rem;font-weight:bold;cursor:pointer}
-.collapse-content{display:none;padding:1rem;background:var(--surface);border:1px solid var(--blue);margin-top:0.5rem;color:var(--gray);font-size:0.9rem}
+.cover-screen{
+    position:absolute;inset:0;
+    background-size:cover;background-position:center;
+    opacity:0;transform:scale(1.04);
+    filter:saturate(1.15) contrast(1.05);
+    transition:opacity 0.5s ease, transform 0.5s ease;
+}
+.cover-screen.show{opacity:1;transform:scale(1)}
+.cover-scanlines{
+    position:absolute;inset:0;
+    background:repeating-linear-gradient(0deg, rgba(0,0,0,0.18) 0px, rgba(0,0,0,0.18) 1px, transparent 1px, transparent 3px);
+    opacity:0;transition:opacity 0.5s;pointer-events:none;
+}
+.cover-scanlines.show{opacity:1}
+.loading-pulse{
+    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    font-family:var(--serif);font-size:0.7rem;letter-spacing:3px;color:var(--cyan);opacity:0;transition:opacity 0.3s;
+}
+.loading-pulse.show{opacity:1}
+
+#song-title{font-family:var(--serif);font-size:1.5rem;font-weight:800;text-transform:uppercase;text-align:center;margin-top:1.75rem;padding:0 1rem;line-height:1.3;letter-spacing:0.5px}
+#artist-name{font-family:var(--sans);font-size:1.1rem;font-weight:600;color:var(--cyan);margin-top:0.4rem;text-shadow:0 0 8px rgba(0,255,242,0.4)}
+
+.support-btn{
+    margin-top:1.75rem;
+    background:transparent;
+    color:var(--amber);border:2px solid var(--amber);
+    padding:0.85rem 2.3rem;border-radius:4px;
+    font-family:var(--serif);font-weight:700;font-size:0.85rem;letter-spacing:1.5px;text-transform:uppercase;
+    box-shadow:0 0 18px rgba(255,157,43,0.35), inset 0 0 12px rgba(255,157,43,0.08);
+    cursor:pointer;
+}
+.support-btn:disabled{border-color:var(--muted);color:var(--muted);box-shadow:none}
+
+.player-embed{width:100%;max-width:420px;margin-top:1.5rem;display:none}
+.player-embed.active{display:block}
+.player-embed iframe{border-radius:8px;border:1px solid var(--glass-border)}
+
+.card{
+    max-width:460px;margin:2.5rem auto 0;padding:1.75rem;
+    background:linear-gradient(160deg, rgba(0,255,214,0.05), rgba(0,0,0,0.3));
+    border:1px solid var(--glass-border);
+    border-radius:10px;
+}
+.card h3{font-family:var(--serif);font-size:1.05rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:1.1rem;color:var(--cyan)}
+.field{
+    width:100%;background:rgba(0,0,0,0.6);
+    border:1px solid rgba(0,255,214,0.2);
+    border-radius:4px;
+    padding:0.9rem 1rem;color:white;margin-bottom:0.85rem;
+    font-family:var(--sans);font-weight:500;font-size:0.95rem;
+}
+.field::placeholder{color:var(--muted)}
+.field:focus{outline:none;border-color:var(--cyan);box-shadow:0 0 10px rgba(0,255,242,0.25)}
+.field.invalid{border-color:#ff4d5e}
+.error-msg{color:#ff6b7a;font-size:0.82rem;margin:-0.5rem 0 0.85rem 0.3rem;display:none}
+.error-msg.show{display:block}
+
+footer{max-width:460px;margin:1.5rem auto 3rem;padding:0 1.5rem}
+.collapse-btn{
+    width:100%;text-align:left;
+    background:rgba(0,255,214,0.04);
+    border:1px solid var(--glass-border);
+    color:var(--white);padding:1rem 1.1rem;border-radius:4px;
+    font-family:var(--serif);font-weight:600;font-size:0.8rem;letter-spacing:1px;text-transform:uppercase;
+    margin-top:0.7rem;cursor:pointer;
+}
+.collapse-content{display:none;padding:1rem 1.1rem;color:var(--muted);font-size:0.88rem;background:rgba(0,0,0,0.3);border-radius:0 0 4px 4px;margin-top:-8px}
+
+.chart-section{max-width:460px;margin:2.5rem auto 0;padding:0 1.5rem}
+.chart-section h3{font-family:var(--serif);font-size:1.2rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:1rem;color:var(--green);text-shadow:0 0 8px rgba(57,255,136,0.4)}
+.chart-empty{color:var(--muted);font-size:0.9rem;padding:1rem 0}
+.chart-item{
+    display:flex;align-items:center;gap:0.9rem;
+    background:linear-gradient(160deg, rgba(0,255,214,0.04), rgba(0,0,0,0.35));
+    border:1px solid var(--glass-border);
+    border-radius:6px;
+    padding:0.75rem 0.9rem;margin-bottom:0.7rem;
+}
+.chart-rank{font-family:var(--serif);font-weight:800;font-size:1.05rem;color:var(--green);width:1.8rem;text-align:center;flex-shrink:0;text-shadow:0 0 8px rgba(57,255,136,0.5)}
+.chart-cover{width:52px;height:52px;border-radius:4px;background-size:cover;background-position:center;background-color:#0a1f1c;flex-shrink:0;border:1px solid var(--glass-border)}
+.chart-info{flex:1;min-width:0}
+.chart-info .t{font-family:var(--sans);font-weight:700;font-size:0.95rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chart-info .a{color:var(--muted);font-size:0.82rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chart-like-btn{
+    flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:0.15rem;
+    background:rgba(255,157,43,0.08);border:1px solid rgba(255,157,43,0.4);
+    color:var(--amber);border-radius:4px;padding:0.5rem 0.7rem;
+    font-family:var(--serif);font-weight:700;font-size:0.8rem;cursor:pointer;
+}
+.chart-like-btn:disabled{opacity:0.4;color:var(--muted);border-color:var(--glass-border);cursor:default}
+
+.bg-layer{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.supernova{
+    position:absolute;top:-10%;left:50%;transform:translateX(-50%);
+    width:600px;height:600px;border-radius:50%;
+    background:radial-gradient(circle, rgba(0,255,242,0.22) 0%, rgba(57,255,136,0.12) 30%, rgba(0,255,242,0) 68%);
+    filter:blur(4px);
+    animation:novaPulse 8s ease-in-out infinite;
+}
+.supernova::before{
+    content:'';position:absolute;inset:0;border-radius:50%;
+    background:radial-gradient(circle, rgba(255,157,43,0.18) 0%, rgba(255,157,43,0) 40%);
+    animation:novaPulse 8s ease-in-out infinite reverse;
+}
+@keyframes novaPulse{
+    0%,100%{opacity:0.55;transform:translateX(-50%) scale(0.92)}
+    50%{opacity:1;transform:translateX(-50%) scale(1.08)}
+}
+
+.sonar-ring{
+    position:absolute;top:22%;left:50%;
+    width:120px;height:120px;margin:-60px 0 0 -60px;
+    border-radius:50%;border:1px solid rgba(0,255,242,0.3);
+    animation:sonarExpand 6s ease-out infinite;
+}
+.sonar-ring.r2{animation-delay:2s}
+.sonar-ring.r3{animation-delay:4s}
+@keyframes sonarExpand{
+    0%{width:60px;height:60px;margin:-30px 0 0 -30px;opacity:0.6;border-color:rgba(0,255,242,0.5)}
+    100%{width:520px;height:520px;margin:-260px 0 0 -260px;opacity:0;border-color:rgba(57,255,136,0)}
+}
+
+.eq-bars{
+    position:absolute;bottom:0;left:0;right:0;
+    display:flex;align-items:flex-end;justify-content:space-between;
+    height:140px;padding:0 4%;
+    opacity:0.14;
+}
+.eq-bars span{
+    flex:1;margin:0 2px;border-radius:2px 2px 0 0;
+    background:linear-gradient(180deg, var(--cyan), var(--green));
+    animation:eqBounce 2.4s ease-in-out infinite;
+}
+@keyframes eqBounce{
+    0%,100%{height:12%}
+    50%{height:var(--h, 70%)}
+}
+body > *:not(.bg-layer){position:relative;z-index:1}
 </style>
 </head>
 <body>
 
+<div class="bg-layer">
+    <div class="supernova"></div>
+    <div class="sonar-ring"></div>
+    <div class="sonar-ring r2"></div>
+    <div class="sonar-ring r3"></div>
+    <div class="eq-bars" id="eq-bars"></div>
+</div>
+
 <nav>
-    <div class="logo">SONIC<span>HYBRID</span></div>
-    <div style="color:var(--border);font-family:var(--mono)">LIVE // SYSTEM</div>
+    <div class="logo">Sonic <span>Hybrid</span></div>
+    <div class="live-badge" id="live-badge"><span class="live-dot"></span>LIVE</div>
 </nav>
 
 <section class="hero">
-    <div class="turntable">
-        <img src="https://via.placeholder.com/200" id="album-art" alt="Cover">
+    <div class="deck-wrap">
+        <div class="deck-inner" id="deck-inner">
+            <div class="deck-label">HYBRID DECK</div>
+            <div class="deck-dots"><span></span><span></span></div>
+            <div class="standby-icon" id="standby-icon"></div>
+            <div class="loading-pulse" id="loading-pulse">LADE COVER…</div>
+            <div class="cover-screen" id="cover-screen"></div>
+            <div class="cover-scanlines" id="cover-scanlines"></div>
+        </div>
     </div>
-    <h2 id="song-title" style="font-size:2rem;text-transform:uppercase">Songtitel</h2>
-    <p id="artist-name" style="color:var(--blue);font-weight:bold;font-size:1.2rem;margin-bottom:1rem">Künstlername</p>
-    <button class="like-btn" onclick="alert('Support registriert!')">👍 Support diesen Song</button>
+
+    <h2 id="song-title">Songtitel</h2>
+    <p id="artist-name">Künstlername</p>
+
+    <button class="support-btn" id="hero-support-btn" disabled>Support diesen Song</button>
+
+    <div class="player-embed" id="player-embed">
+        <iframe id="spotify-iframe" src="" width="100%" height="152" frameborder="0" allowtransparency="true" allow="encrypted-media; autoplay"></iframe>
+    </div>
 </section>
 
-<section class="demo-section">
-    <h3 style="margin-bottom:1rem;text-transform:uppercase;color:var(--border)">Song vorschlagen</h3>
-    <input type="text" class="demo-input" placeholder="Künstler">
-    <input type="text" class="demo-input" placeholder="Titel">
-    <button style="background:var(--border);color:white;border:none;padding:1rem;width:100%;font-weight:900;cursor:pointer">EINREICHEN</button>
+<section class="card">
+    <h3>Song einreichen</h3>
+    <input type="text" class="field" id="input-artist" placeholder="Künstlername">
+    <input type="text" class="field" id="input-title" placeholder="Songtitel">
+    <input type="text" class="field" id="input-link" placeholder="Spotify-Link (open.spotify.com/track/...)">
+    <div class="error-msg" id="link-error">Kein gültiger Spotify-Track-Link erkannt.</div>
 </section>
 
-<section style="max-width:500px;margin:0 auto 4rem auto;padding:0 2rem">
-    <button class="collapse-btn" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">IMPRESSUM</button>
+<section class="chart-section">
+    <h3>Charts</h3>
+    <div id="chart-list">
+        <div class="chart-empty">Noch keine Songs in den Charts – sei der Erste!</div>
+    </div>
+</section>
+
+<footer>
+    <button class="collapse-btn" onclick="const c=this.nextElementSibling;c.style.display=(c.style.display==='block'?'none':'block')">Impressum</button>
     <div class="collapse-content">SONIC HYBRID // Projektleitung. Kontakt: radio-projekt@protonmail.com</div>
-    <button class="collapse-btn" onclick="this.nextElementSibling.style.display=(this.nextElementSibling.style.display==='block'?'none':'block')">DATENSCHUTZ</button>
+    <button class="collapse-btn" onclick="const c=this.nextElementSibling;c.style.display=(c.style.display==='block'?'none':'block')">Datenschutz</button>
     <div class="collapse-content">Keine Datenspeicherung. Nutzung via Spotify-API.</div>
-</section>
+</footer>
+
+<script type="module">
+// Generate randomized equalizer bars for the ambient background.
+const eqContainer = document.getElementById('eq-bars');
+const BAR_COUNT = 28;
+for (let i = 0; i < BAR_COUNT; i++) {
+    const bar = document.createElement('span');
+    const h = 30 + Math.random() * 55;
+    const dur = 1.6 + Math.random() * 1.8;
+    const delay = Math.random() * 2;
+    bar.style.setProperty('--h', `${h}%`);
+    bar.style.animationDuration = `${dur}s`;
+    bar.style.animationDelay = `${delay}s`;
+    eqContainer.appendChild(bar);
+}
+</script>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-app.js";
+import {
+    getDatabase, ref, set, get, update, onValue, runTransaction
+} from "https://www.gstatic.com/firebasejs/10.14.0/firebase-database.js";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyDFvopkwr6AtemyCLT37G7R4kjE4i7lxHs",
+    authDomain: "sonic-hybrid-radio.firebaseapp.com",
+    databaseURL: "https://sonic-hybrid-radio-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "sonic-hybrid-radio",
+    storageBucket: "sonic-hybrid-radio.firebasestorage.app",
+    messagingSenderId: "514724028018",
+    appId: "1:514724028018:web:ae9c1a023d33f1a82caceb",
+    measurementId: "G-8609DRV5NY"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
+const SPOTIFY_TRACK_REGEX = /^https?:\/\/open\.spotify\.com\/(intl-[a-z]{2}\/)?track\/([a-zA-Z0-9]{22})(\?.*)?$/;
+const LIKE_LIMIT_PER_HOUR = 2;
+const HOUR_MS = 60 * 60 * 1000;
+
+const inputArtist = document.getElementById('input-artist');
+const inputTitle = document.getElementById('input-title');
+const inputLink = document.getElementById('input-link');
+const linkError = document.getElementById('link-error');
+const liveBadge = document.getElementById('live-badge');
+const songTitleEl = document.getElementById('song-title');
+const artistNameEl = document.getElementById('artist-name');
+const playerEmbed = document.getElementById('player-embed');
+const spotifyIframe = document.getElementById('spotify-iframe');
+const deckInner = document.getElementById('deck-inner');
+const coverScreen = document.getElementById('cover-screen');
+const coverScanlines = document.getElementById('cover-scanlines');
+const loadingPulse = document.getElementById('loading-pulse');
+const heroSupportBtn = document.getElementById('hero-support-btn');
+const chartList = document.getElementById('chart-list');
+
+let currentRequestId = 0;
+let currentTrackId = null;
+
+// ---------- Like rate limiting (per browser, stored locally) ----------
+function getLikeTimestamps(trackId) {
+    try {
+        const raw = localStorage.getItem(`sh_likes_${trackId}`);
+        return raw ? JSON.parse(raw) : [];
+    } catch (e) {
+        return [];
+    }
+}
+
+function canLike(trackId) {
+    const timestamps = getLikeTimestamps(trackId).filter(t => Date.now() - t < HOUR_MS);
+    return timestamps.length < LIKE_LIMIT_PER_HOUR;
+}
+
+function recordLike(trackId) {
+    const timestamps = getLikeTimestamps(trackId).filter(t => Date.now() - t < HOUR_MS);
+    timestamps.push(Date.now());
+    localStorage.setItem(`sh_likes_${trackId}`, JSON.stringify(timestamps));
+}
+
+function nextLikeAvailableAt(trackId) {
+    const timestamps = getLikeTimestamps(trackId).filter(t => Date.now() - t < HOUR_MS);
+    if (timestamps.length < LIKE_LIMIT_PER_HOUR) return null;
+    const oldest = Math.min(...timestamps);
+    const availableAt = new Date(oldest + HOUR_MS);
+    return availableAt.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' });
+}
+
+async function likeSong(trackId, btnEl) {
+    if (!canLike(trackId)) {
+        const t = nextLikeAvailableAt(trackId);
+        btnEl.textContent = `Ab ${t} wieder möglich`;
+        btnEl.disabled = true;
+        return;
+    }
+    recordLike(trackId);
+    const likesRef = ref(db, `chart/${trackId}/likes`);
+    await runTransaction(likesRef, (current) => (current || 0) + 1);
+    updateLikeButtonState(trackId, btnEl);
+}
+
+function updateLikeButtonState(trackId, btnEl, baseLabel = 'Support diesen Song') {
+    if (canLike(trackId)) {
+        btnEl.disabled = false;
+        btnEl.textContent = baseLabel;
+    } else {
+        const t = nextLikeAvailableAt(trackId);
+        btnEl.disabled = true;
+        btnEl.textContent = `Ab ${t} wieder möglich`;
+    }
+}
+
+// ---------- Playback + submission ----------
+function extractTrackId(url) {
+    const match = url.match(SPOTIFY_TRACK_REGEX);
+    return match ? match[2] : null;
+}
+
+function tryAutoStart() {
+    const link = inputLink.value.trim();
+    if (!link) {
+        linkError.classList.remove('show');
+        inputLink.classList.remove('invalid');
+        stopPlayback();
+        return;
+    }
+
+    const trackId = extractTrackId(link);
+
+    if (!trackId) {
+        linkError.classList.add('show');
+        inputLink.classList.add('invalid');
+        stopPlayback();
+        return;
+    }
+
+    linkError.classList.remove('show');
+    inputLink.classList.remove('invalid');
+    startPlayback(trackId, link);
+}
+
+async function startPlayback(trackId, link) {
+    const requestId = ++currentRequestId;
+    currentTrackId = trackId;
+
+    liveBadge.classList.add('on-air');
+    deckInner.classList.add('loading');
+    loadingPulse.classList.add('show');
+    coverScreen.classList.remove('show');
+    coverScanlines.classList.remove('show');
+    deckInner.classList.remove('loaded');
+    heroSupportBtn.disabled = true;
+
+    spotifyIframe.src = `https://open.spotify.com/embed/track/${trackId}?utm_source=generator&autoplay=1`;
+    playerEmbed.classList.add('active');
+
+    let coverUrl = '';
+    let resolvedTitle = inputTitle.value.trim();
+    let resolvedArtist = inputArtist.value.trim();
+
+    try {
+        const res = await fetch(`https://open.spotify.com/oembed?url=${encodeURIComponent(link)}`);
+        if (!res.ok) throw new Error('oEmbed failed');
+        const data = await res.json();
+        if (requestId !== currentRequestId) return;
+
+        if (data.thumbnail_url) {
+            coverUrl = data.thumbnail_url;
+            coverScreen.style.backgroundImage = `url('${coverUrl}')`;
+            coverScreen.classList.add('show');
+            coverScanlines.classList.add('show');
+            deckInner.classList.add('loaded');
+        }
+
+        resolvedTitle = resolvedTitle || data.title || 'Songtitel';
+        resolvedArtist = resolvedArtist || data.author_name || 'Künstlername';
+        songTitleEl.textContent = resolvedTitle;
+        artistNameEl.textContent = resolvedArtist;
+    } catch (e) {
+        resolvedTitle = resolvedTitle || 'Songtitel';
+        resolvedArtist = resolvedArtist || 'Künstlername';
+        songTitleEl.textContent = resolvedTitle;
+        artistNameEl.textContent = resolvedArtist;
+    } finally {
+        if (requestId === currentRequestId) {
+            deckInner.classList.remove('loading');
+            loadingPulse.classList.remove('show');
+            updateLikeButtonState(trackId, heroSupportBtn);
+        }
+    }
+
+    // Upsert into the shared chart — never overwrite existing like counts.
+    try {
+        const songRef = ref(db, `chart/${trackId}`);
+        const snap = await get(songRef);
+        if (!snap.exists()) {
+            await set(songRef, {
+                trackId, link,
+                title: resolvedTitle,
+                artist: resolvedArtist,
+                coverUrl,
+                likes: 0,
+                addedAt: Date.now()
+            });
+        } else {
+            await update(songRef, { title: resolvedTitle, artist: resolvedArtist, coverUrl: coverUrl || snap.val().coverUrl || '' });
+        }
+    } catch (e) {
+        // Chart write failed — playback still works locally.
+    }
+}
+
+function stopPlayback() {
+    currentRequestId++;
+    currentTrackId = null;
+    liveBadge.classList.remove('on-air');
+    deckInner.classList.remove('loading', 'loaded');
+    loadingPulse.classList.remove('show');
+    coverScreen.classList.remove('show');
+    coverScanlines.classList.remove('show');
+    songTitleEl.textContent = 'Songtitel';
+    artistNameEl.textContent = 'Künstlername';
+    spotifyIframe.src = '';
+    playerEmbed.classList.remove('active');
+    heroSupportBtn.disabled = true;
+    heroSupportBtn.textContent = 'Support diesen Song';
+}
+
+heroSupportBtn.addEventListener('click', () => {
+    if (currentTrackId) likeSong(currentTrackId, heroSupportBtn);
+});
+
+inputLink.addEventListener('input', tryAutoStart);
+inputArtist.addEventListener('input', () => { if (playerEmbed.classList.contains('active')) artistNameEl.textContent = inputArtist.value.trim() || 'Künstlername'; });
+inputTitle.addEventListener('input', () => { if (playerEmbed.classList.contains('active')) songTitleEl.textContent = inputTitle.value.trim() || 'Songtitel'; });
+
+// ---------- Chart list (live, sorted by likes) ----------
+function renderChart(songsObj) {
+    if (!songsObj) {
+        chartList.innerHTML = '<div class="chart-empty">Noch keine Songs in den Charts – sei der Erste!</div>';
+        return;
+    }
+    const songs = Object.values(songsObj).sort((a, b) => (b.likes || 0) - (a.likes || 0));
+
+    chartList.innerHTML = '';
+    songs.forEach((song, i) => {
+        const item = document.createElement('div');
+        item.className = 'chart-item';
+
+        const cover = document.createElement('div');
+        cover.className = 'chart-cover';
+        if (song.coverUrl) cover.style.backgroundImage = `url('${song.coverUrl}')`;
+
+        const info = document.createElement('div');
+        info.className = 'chart-info';
+        info.innerHTML = `<div class="t"></div><div class="a"></div>`;
+        info.querySelector('.t').textContent = song.title || 'Unbekannt';
+        info.querySelector('.a').textContent = song.artist || '';
+
+        const rank = document.createElement('div');
+        rank.className = 'chart-rank';
+        rank.textContent = `#${i + 1}`;
+
+        const likeBtn = document.createElement('button');
+        likeBtn.className = 'chart-like-btn';
+        const likeLabel = `♥ ${song.likes || 0}`;
+        updateLikeButtonState(song.trackId, likeBtn, likeLabel);
+        likeBtn.addEventListener('click', () => likeSong(song.trackId, likeBtn));
+
+        item.append(rank, cover, info, likeBtn);
+        chartList.appendChild(item);
+    });
+}
+
+onValue(ref(db, 'chart'), (snapshot) => {
+    renderChart(snapshot.val());
+});
+</script>
 
 </body>
 </html>
